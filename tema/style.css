@@ -1,0 +1,13 @@
+/*
+Theme Name: My Time
+Template: twentytwentyfive
+Description: Tema del sito dell'ASD My Time di Capannori. Child theme di Twenty Twenty-Five.
+Author: Nicholas Barsanti
+Author URI: https://nicholasbarsanti.it
+Version: 0.1.0
+Requires at least: 6.7
+Requires PHP: 7.4
+Text Domain: mytime
+*/
+
+/* Twenty Twenty-Five non carica lo style.css del child: il CSS aggiuntivo sta in theme.json → styles.css. */
