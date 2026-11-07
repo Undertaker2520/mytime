@@ -1,0 +1,6 @@
+# File di WordPress e di Local che non vanno nel repository
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+materiali/
