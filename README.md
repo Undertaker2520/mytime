@@ -31,6 +31,7 @@ Tutto ciò che sul sito è scritto **[DA COMPLETARE: …]**. In ordine di priori
 
 **3. Per la messa in sicurezza**
 
+- [ ] (Nicholas) Confermare il contatto in `security.txt`: ora è https://nicholasbarsanti.it
 - [ ] Nomi ed email dei soci che avranno un account Editore (ognuno con un'app di autenticazione sul telefono)
 - [ ] Account Google Drive o Dropbox dell'associazione per i backup
 
@@ -39,16 +40,18 @@ Tutto ciò che sul sito è scritto **[DA COMPLETARE: …]**. In ordine di priori
 Serve [LocalWP](https://localwp.com/) con un sito chiamato `mytime`.
 
 1. Clona il repository, per esempio in `C:\sviluppo\mytime`.
-2. Collega il tema a Local con una junction (PowerShell, non serve essere amministratore):
+2. Collega tema e plugin a Local con due junction (PowerShell, non serve essere amministratore):
 
    ```powershell
    $site = "$env:USERPROFILE\Local Sites\mytime\app\public"
    New-Item -ItemType Junction -Path "$site\wp-content\themes\mytime" -Target "C:\sviluppo\mytime\tema"
+   New-Item -ItemType Junction -Path "$site\wp-content\plugins\mytime-sicurezza" -Target "C:\sviluppo\mytime\sicurezza"
    ```
 
-3. In WP Admin → Aspetto → Temi attiva **My Time** (Twenty Twenty-Five deve restare installato).
+3. In WP Admin attiva il tema **My Time** (Twenty Twenty-Five deve restare installato) e il plugin **My Time – Sicurezza**.
+4. Per provare `.htaccess` il sito Local deve usare Apache (Overview → Web server): copia `server/.htaccess` nella cartella `app\public`.
 
-> ⚠️ Per togliere la junction usa solo `cmd /c rmdir "$site\wp-content\themes\mytime"`. `Remove-Item -Recurse` può cancellare i file veri del tema. Togli la junction anche prima di eliminare il sito in Local.
+> ⚠️ Per togliere una junction usa solo `cmd /c rmdir "<percorso della junction>"`. `Remove-Item -Recurse` può cancellare i file veri. Togli le junction anche prima di eliminare il sito in Local.
 
 Le pagine (Home, Corsi, Sedi e orari, Iscrizioni e costi, Contatti, Privacy) e il menu stanno nel database di WordPress, non nel repository.
 
@@ -69,6 +72,38 @@ tema/
 - I soci possono scegliere solo colori e dimensioni del tema (`custom: false`).
 - Gli orari sono sia nella scheda di ogni corso sia nella tabella della sede: quando cambiano vanno corretti in tutti e due i punti.
 
+## Sicurezza
+
+```
+sicurezza/mytime-sicurezza.php   plugin con le protezioni in PHP
+server/.htaccess                 .htaccess completo per la cartella principale su OVH
+server/.well-known/security.txt  contatto per segnalare problemi di sicurezza
+```
+
+Il plugin **My Time – Sicurezza** fa tutto in codice versionato, senza toccare `wp-config.php`:
+
+- `DISALLOW_FILE_EDIT`: niente editor dei file di temi e plugin in WP Admin
+- aggiornamenti automatici di core (anche versioni maggiori), plugin e temi
+- XML-RPC spento, pingback compresi
+- nomi utente non scopribili: `?author=N` e `/author/…` portano alla Home; `/wp-json/wp/v2/users` esiste solo per chi ha fatto l'accesso; niente utenti nella sitemap né nei dati oEmbed; stesso messaggio per nome utente o password sbagliati; "password dimenticata" risponde allo stesso modo anche per utenti inesistenti
+- meta description presa dal "Riassunto" di pagine e articoli
+
+`server/.htaccess` aggiunge: redirect a HTTPS, blocco di `xmlrpc.php`, `wp-config.php`, `readme.html` e `license.txt`, niente PHP in `wp-content/uploads`, niente elenco delle cartelle, e gli header HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy e Content-Security-Policy (più permissiva in amministrazione, dove l'editor ne ha bisogno).
+
+Gli avatar Gravatar sono spenti (Impostazioni → Discussione), così nemmeno l'amministrazione chiama domini esterni.
+
+### Checklist
+
+- [x] Plugin di sicurezza attivo e verificato in locale
+- [ ] `.htaccess` provato in locale con Apache: sito, editor, caricamento immagini
+- [ ] Su OVH: prefisso tabelle diverso da `wp_` all'installazione
+- [ ] Su OVH: un solo amministratore (nessun utente "admin"), account **Editore** per i soci
+- [ ] Two Factor installato e attivo per tutti gli account
+- [ ] UpdraftPlus: backup settimanali su Google Drive o Dropbox dell'associazione, ripristino provato
+- [ ] Twenty Twenty-Three e Twenty Twenty-Four eliminati
+- [ ] `security.txt` caricato in `/.well-known/` e `Expires` rinnovato ogni anno
+- [ ] securityheaders.com almeno A, con l'amministrazione funzionante
+
 ## Ancora da scrivere
 
-Pubblicazione su OVH, checklist di sicurezza e guida per i soci (`GUIDA-SOCI.md`).
+Pubblicazione su OVH e guida per i soci (`GUIDA-SOCI.md`).
