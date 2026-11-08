@@ -88,6 +88,25 @@ remove_action( 'wp_enqueue_scripts', 'wp_enqueue_emoji_styles' );
 remove_action( 'embed_head', 'print_emoji_detection_script' );
 remove_action( 'enqueue_embed_scripts', 'wp_enqueue_emoji_styles' );
 
+// Mai Google Fonts, nemmeno quelli che un plugin carica in amministrazione (es. UpdraftPlus).
+add_filter(
+	'style_loader_src',
+	function ( $src ) {
+		return false === strpos( (string) $src, 'fonts.googleapis.com' ) ? $src : false;
+	}
+);
+add_filter(
+	'wp_resource_hints',
+	function ( $urls ) {
+		return array_filter(
+			$urls,
+			function ( $url ) {
+				return false === strpos( is_array( $url ) ? (string) ( $url['href'] ?? '' ) : (string) $url, 'fonts.googleapis.com' );
+			}
+		);
+	}
+);
+
 // Meta description dal riassunto di pagine e articoli (pannello "Riassunto" nell'editor).
 add_action(
 	'init',

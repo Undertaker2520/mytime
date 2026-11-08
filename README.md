@@ -86,6 +86,7 @@ Il plugin **My Time – Sicurezza** fa tutto in codice versionato, senza toccare
 - aggiornamenti automatici di core (anche versioni maggiori), plugin e temi
 - XML-RPC spento, pingback compresi
 - nomi utente non scopribili: `?author=N` e `/author/…` portano alla Home; `/wp-json/wp/v2/users` esiste solo per chi ha fatto l'accesso; niente utenti nella sitemap né nei dati oEmbed; stesso messaggio per nome utente o password sbagliati; "password dimenticata" risponde allo stesso modo anche per utenti inesistenti
+- mai Google Fonts, nemmeno in amministrazione: UpdraftPlus caricava Inter da `fonts.googleapis.com` nella sua pagina
 - niente script delle emoji sul sito pubblico (creava un worker bloccato dalla CSP e poteva caricare immagini da s.w.org)
 - meta description presa dal "Riassunto" di pagine e articoli
 
@@ -99,7 +100,8 @@ Gli avatar Gravatar sono spenti (Impostazioni → Discussione), così nemmeno l'
 - [x] `.htaccess` provato in locale con Apache: sito, editor, Editor del sito, caricamento immagini, nessuna violazione della CSP
 - [ ] Su OVH: prefisso tabelle diverso da `wp_` all'installazione
 - [ ] Su OVH: un solo amministratore (nessun utente "admin"), account **Editore** per i soci
-- [ ] Two Factor installato e attivo per tutti gli account
+- [x] Two Factor 0.17.0 e UpdraftPlus 1.26.14 installati in locale e provati con la CSP (codice QR e pagina backup senza violazioni)
+- [ ] Two Factor attivo per tutti gli account (ognuno configura la sua app dal proprio profilo)
 - [ ] UpdraftPlus: backup settimanali su Google Drive o Dropbox dell'associazione, ripristino provato
 - [ ] Twenty Twenty-Three e Twenty Twenty-Four eliminati
 - [ ] `security.txt` caricato in `/.well-known/` e `Expires` rinnovato ogni anno
