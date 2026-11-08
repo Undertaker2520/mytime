@@ -70,7 +70,6 @@
 					"outline": { "color": "var:preset|color|contrast", "offset": "2px", "style": "solid", "width": "2px" }
 				}
 			}
-		},
-		"css": ".wp-element-button,.wp-block-button__link{transition:background-color .15s ease-out,transform .1s ease-out}@media (hover:none){.wp-element-button:active,.wp-block-button__link:active{transform:scale(.97)}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}"
+		}
 	}
 }

@@ -60,14 +60,16 @@ Le pagine (Home, Corsi, Sedi e orari, Iscrizioni e costi, Contatti, Privacy) e i
 
 ```
 tema/
-├─ style.css         intestazione del child theme (Template: twentytwentyfive)
-├─ theme.json        palette, font, dimensioni, pulsanti e le poche righe di CSS
-├─ functions.php     categoria "My Time" per i pattern
+├─ style.css         intestazione del child theme + animazioni e grafica (usa solo le variabili di theme.json)
+├─ theme.json        palette, font, dimensioni, pulsanti: l'unica fonte di colori e font
+├─ functions.php     carica style.css, categoria "My Time" per i pattern
 ├─ parts/footer.html piè di pagina dell'associazione
 └─ patterns/         apertura, scheda corso, scheda sede, tabella orari, invito a contattarci
 ```
 
-- Il CSS aggiuntivo sta in `theme.json` → `styles.css`, perché Twenty Twenty-Five non carica lo `style.css` del child.
+- `style.css` è caricato da `functions.php`, perché Twenty Twenty-Five non carica lo `style.css` del child. Niente SCSS né jQuery: le variabili sono quelle di `theme.json` (`var(--wp--preset--color--accent-1)` ecc.).
+- Animazioni solo CSS: entrata dell'Apertura (il titolo resta fermo, è l'elemento LCP), schede di corsi e sedi che compaiono scorrendo (`animation-timeline: view()`, ferme dove non supportato), tutto spento con "riduci movimento".
+- L'Apertura è un blocco Copertina: si può aggiungere una foto di sfondo, che resta coperta al 90% dal rosa chiaro così il testo si legge sempre (contrasto ≥ 11:1 anche con una foto nera).
 - I colori usano i nomi di Twenty Twenty-Five (`base`, `contrast`, `accent-1`…), così i template del tema padre restano coerenti. Contrasti WCAG AA verificati: magenta `#E2007A` solo come sfondo dei pulsanti (testo bianco 4,65:1), magenta scuro `#B8005F` per i link.
 - Font: Manrope, self-hosted dal tema padre.
 - I soci possono scegliere solo colori e dimensioni del tema (`custom: false`).

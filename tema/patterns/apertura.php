@@ -3,13 +3,13 @@
  * Title: Apertura
  * Slug: mytime/apertura
  * Categories: mytime, banner
- * Description: Inizio della Home: motto, chi siamo in una riga e pulsanti per chiamare o scrivere.
+ * Description: Inizio della Home: motto, chi siamo in una riga e pulsanti per chiamare o scrivere. Si può aggiungere una foto di sfondo: resta schiarita dal rosa, così il testo si legge sempre.
  */
 ?>
-<!-- wp:group {"align":"full","backgroundColor":"accent-2","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-accent-2-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
-	<!-- wp:paragraph {"textColor":"accent-3","fontSize":"small","style":{"typography":{"fontWeight":"700"}}} -->
-	<p class="has-accent-3-color has-text-color has-small-font-size" style="font-weight:700">Movimento · Energia · Divertimento</p>
+<!-- wp:cover {"dimRatio":90,"overlayColor":"accent-2","isUserOverlayColor":true,"isDark":false,"align":"full","className":"mt-apertura","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull is-light mt-apertura" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><span aria-hidden="true" class="wp-block-cover__background has-accent-2-background-color has-background-dim-90 has-background-dim"></span><div class="wp-block-cover__inner-container">
+	<!-- wp:paragraph {"className":"mt-motto","textColor":"accent-3","fontSize":"small","style":{"typography":{"fontWeight":"700"}}} -->
+	<p class="mt-motto has-accent-3-color has-text-color has-small-font-size" style="font-weight:700">Movimento · Energia · Divertimento</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading {"level":1,"fontSize":"xx-large"} -->
@@ -35,5 +35,5 @@
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->
-</div>
-<!-- /wp:group -->
+</div></div>
+<!-- /wp:cover -->

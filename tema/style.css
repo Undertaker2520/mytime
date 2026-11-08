@@ -4,10 +4,78 @@ Template: twentytwentyfive
 Description: Tema del sito dell'ASD My Time di Capannori. Child theme di Twenty Twenty-Five.
 Author: Nicholas Barsanti
 Author URI: https://nicholasbarsanti.it
-Version: 0.1.0
+Version: 0.2.0
 Requires at least: 6.7
 Requires PHP: 7.4
 Text Domain: mytime
 */
 
-/* Twenty Twenty-Five non carica lo style.css del child: il CSS aggiuntivo sta in theme.json → styles.css. */
+/* Colori, font e dimensioni stanno in theme.json: qui si usano solo le sue variabili --wp--preset--*. */
+
+/* Pulsanti: cambio colore breve, pressione sul telefono. */
+.wp-element-button,
+.wp-block-button__link {
+	transition: background-color 0.15s ease-out, transform 0.1s ease-out;
+}
+@media (hover: none) {
+	.wp-element-button:active,
+	.wp-block-button__link:active {
+		transform: scale(0.97);
+	}
+}
+
+/* Apertura: il motto come etichetta, come sui volantini. */
+.mt-motto {
+	display: inline-block;
+	padding: 0.25em 0.9em;
+	border-radius: 999px;
+	background: var(--wp--preset--color--base);
+}
+
+/* Titoli di sezione: tratto magenta "a pennello" sotto, decorativo. */
+.wp-block-post-content > h2.wp-block-heading::after {
+	content: "";
+	display: block;
+	width: 4rem;
+	height: 0.6rem;
+	margin-top: 0.4rem;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 10'%3E%3Cpath d='M2 7c10-5 20-5 30-2s20 3 30-3' fill='none' stroke='%23E2007A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left center / contain;
+}
+
+/* Entrata dell'apertura: ciò che segue il titolo sale piano. Il titolo resta fermo (è l'elemento LCP). */
+@keyframes mt-entra {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+.mt-apertura .wp-block-cover__inner-container > :not(h1) {
+	animation: mt-entra 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.mt-apertura .wp-block-cover__inner-container > :nth-child(3) { animation-delay: 0.06s; }
+.mt-apertura .wp-block-cover__inner-container > :nth-child(4) { animation-delay: 0.12s; }
+.mt-apertura .wp-block-cover__inner-container > :nth-child(5) { animation-delay: 0.18s; }
+
+/* Schede di corsi e sedi: compaiono mentre scorri. Dove il browser non lo supporta restano ferme. */
+@supports (animation-timeline: view()) {
+	.mt-scheda-corso,
+	.mt-scheda-sede {
+		animation: mt-entra linear both;
+		animation-timeline: view();
+		animation-range: entry 0% entry 60%;
+	}
+}
+
+/* "Riduci movimento" attivo: niente animazioni né transizioni. */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
+	}
+}
