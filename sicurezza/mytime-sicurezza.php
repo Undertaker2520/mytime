@@ -82,6 +82,12 @@ add_action(
 	2
 );
 
+// Niente script delle emoji sul sito pubblico: crea un worker blob: (bloccato dalla CSP) e può caricare immagini da s.w.org.
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_emoji_styles' );
+remove_action( 'embed_head', 'print_emoji_detection_script' );
+remove_action( 'enqueue_embed_scripts', 'wp_enqueue_emoji_styles' );
+
 // Meta description dal riassunto di pagine e articoli (pannello "Riassunto" nell'editor).
 add_action(
 	'init',

@@ -49,7 +49,7 @@ Serve [LocalWP](https://localwp.com/) con un sito chiamato `mytime`.
    ```
 
 3. In WP Admin attiva il tema **My Time** (Twenty Twenty-Five deve restare installato) e il plugin **My Time – Sicurezza**.
-4. Per provare `.htaccess` il sito Local deve usare Apache (Overview → Web server): copia `server/.htaccess` nella cartella `app\public`.
+4. Per provare `.htaccess` il sito Local deve usare Apache (Overview → Web server): copia `server/.htaccess` nella cartella `app\public`. L'Apache di Local non carica `mod_headers`: aggiungi `LoadModule headers_module "{{ modules }}/mod_headers.so"` in `Local Sites\mytime\conf\apache\modules.conf.hbs` e riavvia il sito, altrimenti gli header di sicurezza non partono.
 
 > ⚠️ Per togliere una junction usa solo `cmd /c rmdir "<percorso della junction>"`. `Remove-Item -Recurse` può cancellare i file veri. Togli le junction anche prima di eliminare il sito in Local.
 
@@ -86,6 +86,7 @@ Il plugin **My Time – Sicurezza** fa tutto in codice versionato, senza toccare
 - aggiornamenti automatici di core (anche versioni maggiori), plugin e temi
 - XML-RPC spento, pingback compresi
 - nomi utente non scopribili: `?author=N` e `/author/…` portano alla Home; `/wp-json/wp/v2/users` esiste solo per chi ha fatto l'accesso; niente utenti nella sitemap né nei dati oEmbed; stesso messaggio per nome utente o password sbagliati; "password dimenticata" risponde allo stesso modo anche per utenti inesistenti
+- niente script delle emoji sul sito pubblico (creava un worker bloccato dalla CSP e poteva caricare immagini da s.w.org)
 - meta description presa dal "Riassunto" di pagine e articoli
 
 `server/.htaccess` aggiunge: redirect a HTTPS, blocco di `xmlrpc.php`, `wp-config.php`, `readme.html` e `license.txt`, niente PHP in `wp-content/uploads`, niente elenco delle cartelle, e gli header HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy e Content-Security-Policy (più permissiva in amministrazione, dove l'editor ne ha bisogno).
@@ -95,7 +96,7 @@ Gli avatar Gravatar sono spenti (Impostazioni → Discussione), così nemmeno l'
 ### Checklist
 
 - [x] Plugin di sicurezza attivo e verificato in locale
-- [ ] `.htaccess` provato in locale con Apache: sito, editor, caricamento immagini
+- [x] `.htaccess` provato in locale con Apache: sito, editor, Editor del sito, caricamento immagini, nessuna violazione della CSP
 - [ ] Su OVH: prefisso tabelle diverso da `wp_` all'installazione
 - [ ] Su OVH: un solo amministratore (nessun utente "admin"), account **Editore** per i soci
 - [ ] Two Factor installato e attivo per tutti gli account
