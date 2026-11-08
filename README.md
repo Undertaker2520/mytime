@@ -32,6 +32,7 @@ Tutto ciò che sul sito è scritto **[DA COMPLETARE: …]**. In ordine di priori
 **3. Per la messa in sicurezza**
 
 - [ ] (Nicholas) Confermare il contatto in `security.txt`: ora è https://nicholasbarsanti.it
+- [ ] (Nicholas) In `GUIDA-SOCI.md`: indirizzo del sito e contatto di Nicholas per i soci
 - [ ] Nomi ed email dei soci che avranno un account Editore (ognuno con un'app di autenticazione sul telefono)
 - [ ] Account Google Drive o Dropbox dell'associazione per i backup
 
@@ -86,6 +87,7 @@ Il plugin **My Time – Sicurezza** fa tutto in codice versionato, senza toccare
 - aggiornamenti automatici di core (anche versioni maggiori), plugin e temi
 - XML-RPC spento, pingback compresi
 - nomi utente non scopribili: `?author=N` e `/author/…` portano alla Home; `/wp-json/wp/v2/users` esiste solo per chi ha fatto l'accesso; niente utenti nella sitemap né nei dati oEmbed; stesso messaggio per nome utente o password sbagliati; "password dimenticata" risponde allo stesso modo anche per utenti inesistenti
+- commenti e pingback chiusi ovunque: gli avvisi non hanno moduli che raccolgono nome ed email
 - mai Google Fonts, nemmeno in amministrazione: UpdraftPlus caricava Inter da `fonts.googleapis.com` nella sua pagina
 - niente script delle emoji sul sito pubblico (creava un worker bloccato dalla CSP e poteva caricare immagini da s.w.org)
 - meta description presa dal "Riassunto" di pagine e articoli
@@ -107,6 +109,10 @@ Gli avatar Gravatar sono spenti (Impostazioni → Discussione), così nemmeno l'
 - [ ] `security.txt` caricato in `/.well-known/` e `Expires` rinnovato ogni anno
 - [ ] securityheaders.com almeno A, con l'amministrazione funzionante
 
+## Guida per i soci
+
+[GUIDA-SOCI.md](GUIDA-SOCI.md): accesso con l'app di autenticazione, cambiare un orario, aggiungere un corso con il pattern, pubblicare un avviso, cosa non fare. Le etichette sono quelle di WordPress in italiano (lingua del sito: `it_IT`).
+
 ## Ancora da scrivere
 
-Pubblicazione su OVH e guida per i soci (`GUIDA-SOCI.md`).
+Pubblicazione su OVH.

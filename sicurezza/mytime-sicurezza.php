@@ -88,6 +88,10 @@ remove_action( 'wp_enqueue_scripts', 'wp_enqueue_emoji_styles' );
 remove_action( 'embed_head', 'print_emoji_detection_script' );
 remove_action( 'enqueue_embed_scripts', 'wp_enqueue_emoji_styles' );
 
+// Niente commenti né pingback: il sito non raccoglie dati personali (decisione dell'associazione).
+add_filter( 'comments_open', '__return_false' );
+add_filter( 'pings_open', '__return_false' );
+
 // Mai Google Fonts, nemmeno quelli che un plugin carica in amministrazione (es. UpdraftPlus).
 add_filter(
 	'style_loader_src',
