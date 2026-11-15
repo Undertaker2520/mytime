@@ -35,6 +35,9 @@
 		}
 	},
 	"styles": {
+		"spacing": {
+			"blockGap": "1.5rem"
+		},
 		"typography": {
 			"fontSize": "var:preset|font-size|medium",
 			"fontWeight": "400",

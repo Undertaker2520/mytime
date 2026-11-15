@@ -52,12 +52,20 @@ function mt_img( $id, $taglia = 'large' ) {
 function mt_griglia( $interno, $colonne, $minimo ) {
 	return "<!-- wp:group {\"layout\":{\"type\":\"grid\",\"columnCount\":$colonne,\"minimumColumnWidth\":\"$minimo\"}} -->\n<div class=\"wp-block-group\">$interno</div>\n<!-- /wp:group -->\n\n";
 }
-function mt_colonne( array $colonne ) {
+// $larghezze facoltative, per esempio array( '33.33%', '66.66%' ).
+function mt_colonne( array $colonne, array $larghezze = array() ) {
 	$out = "<!-- wp:columns -->\n<div class=\"wp-block-columns\">";
-	foreach ( $colonne as $c ) {
-		$out .= "<!-- wp:column -->\n<div class=\"wp-block-column\">$c</div>\n<!-- /wp:column -->\n\n";
+	foreach ( $colonne as $i => $c ) {
+		$w    = $larghezze[ $i ] ?? '';
+		$out .= $w
+			? "<!-- wp:column {\"width\":\"$w\"} -->\n<div class=\"wp-block-column\" style=\"flex-basis:$w\">$c</div>\n<!-- /wp:column -->\n\n"
+			: "<!-- wp:column -->\n<div class=\"wp-block-column\">$c</div>\n<!-- /wp:column -->\n\n";
 	}
 	return $out . "</div>\n<!-- /wp:columns -->\n\n";
+}
+// Domanda frequente: blocco Dettagli (si apre e chiude senza JavaScript).
+function mt_faq( $domanda, $risposta ) {
+	return "<!-- wp:details -->\n<details class=\"wp-block-details\"><summary>$domanda</summary>" . mt_p( $risposta ) . "</details>\n<!-- /wp:details -->\n\n";
 }
 // Scheda corso dal pattern: ancora (#zumba), colore, foto in cima e testi.
 function mt_corso( $nome, $ancora, $colore, $foto, $descrizione, $dove ) {
@@ -182,15 +190,18 @@ $pagine = array(
 		'Iscrizioni e costi',
 		mt_colonne(
 			array(
-				mt_h( 'Come funzionano' ) . mt_p( 'I corsi di My Time fanno parte dei corsi sportivi comunali del Comune di Capannori. Durano 7 mesi, dal 1° ottobre al 30 aprile.' ),
-				mt_h( 'Quanto costano' )
-				. mt_p( 'Le tariffe comunali 2026-2027 vanno da 140 a 180 € a seconda della fascia (ragazzi, adulti, over 65). L\'eventuale mese di proroga costa fino a 28 €.' )
-				. mt_p( '[DA COMPLETARE: tariffe dei corsi My Time]' )
-				. mt_p( 'Tutti i dettagli sono sul <a href="https://www.comune.capannori.lu.it/notizia/giovedi-1-ottobre-iniziano-i-corsi-sportivi-comunali-2026-2027-iscrizioni-aperte/">sito del Comune di Capannori</a>.' ),
-			)
+				mt_h( 'Domande frequenti' ) . mt_p( 'Non trovi la risposta? Chiamaci o scrivici su WhatsApp: ti rispondiamo volentieri.' ),
+				mt_faq( 'Quando iniziano e finiscono i corsi?', 'Durano 7 mesi, dal 1° ottobre al 30 aprile. Fanno parte dei corsi sportivi comunali del Comune di Capannori.' )
+				. mt_faq( 'Quanto costano?', 'Le tariffe comunali 2026-2027 vanno da 140 a 180 € a seconda della fascia (ragazzi, adulti, over 65); l\'eventuale mese di proroga costa fino a 28 €. [DA COMPLETARE: tariffe dei corsi My Time]. Tutti i dettagli sono sul <a href="https://www.comune.capannori.lu.it/notizia/giovedi-1-ottobre-iniziano-i-corsi-sportivi-comunali-2026-2027-iscrizioni-aperte/">sito del Comune di Capannori</a>.' )
+				. mt_faq( 'Come mi iscrivo?', 'Contattaci per telefono, WhatsApp o email: ti spieghiamo tutto noi. Le iscrizioni non si fanno online.' )
+				. mt_faq( 'Quali documenti servono?', '[DA COMPLETARE: per esempio il certificato medico]' )
+				. mt_faq( 'Dove si svolgono i corsi?', 'Nelle palestre delle scuole primarie di Camigliano e Lunata. Giorni e orari sono in <a href="/sedi-e-orari/">Sedi e orari</a>.' )
+				. mt_faq( 'Chi può partecipare?', '[DA COMPLETARE: età e livello richiesti per ciascun corso]' )
+				. mt_faq( 'Posso provare una lezione prima di iscrivermi?', '[DA COMPLETARE]' ),
+			),
+			array( '33.33%', '66.66%' )
 		)
 		. mt_pattern( 'come-iscriversi' )
-		. mt_p( 'Documenti da portare: [DA COMPLETARE: per esempio il certificato medico]' )
 		. $invito,
 	),
 	'contatti'           => array(
