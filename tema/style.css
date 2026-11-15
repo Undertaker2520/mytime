@@ -12,6 +12,19 @@ Text Domain: mytime
 
 /* Colori, font e dimensioni stanno in theme.json: qui si usano solo le sue variabili --wp--preset--*. */
 
+/* Contenitore unico di 1200 px (theme.json). I testi lunghi restano al massimo 70 caratteri per riga,
+   allineati al bordo sinistro del contenitore invece che centrati. */
+.wp-block-post-content > :is(p, ul, ol) {
+	max-width: 70ch;
+	margin-left: max(0px, calc((100% - var(--wp--style--global--content-size)) / 2)) !important;
+	margin-right: auto !important;
+}
+.mt-apertura .wp-block-cover__inner-container > :not(.mt-motto) {
+	max-width: 40rem;
+	margin-left: max(0px, calc((100% - var(--wp--style--global--content-size)) / 2)) !important;
+	margin-right: auto !important;
+}
+
 /* Pulsanti: cambio colore breve, pressione sul telefono. */
 .wp-element-button,
 .wp-block-button__link {
