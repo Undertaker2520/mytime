@@ -37,7 +37,8 @@ Text Domain: mytime
 }
 
 /* Titoli di sezione: tratto magenta "a pennello" sotto, decorativo. Il SVG fa solo da maschera, il colore viene da theme.json. */
-.wp-block-post-content > h2.wp-block-heading::after {
+.wp-block-post-content > h2.wp-block-heading::after,
+.mt-iscriversi > h2.wp-block-heading::after {
 	--mt-pennello: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 10'%3E%3Cpath d='M2 7c10-5 20-5 30-2s20 3 30-3' fill='none' stroke='black' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
 	content: "";
 	display: block;
@@ -72,6 +73,19 @@ Text Domain: mytime
 		radial-gradient(circle at 4% 93%, transparent 0 10px, var(--wp--preset--color--corso-verde) 11px 15px, transparent 16px),
 		radial-gradient(circle at 62% 96%, var(--wp--preset--color--corso-viola) 0 8px, transparent 9px);
 	animation: mt-battuta 0.6s ease-in-out 4;
+}
+/* Due note musicali, in controtempo rispetto ai cerchi (finiscono entro 2,7 s). */
+.mt-apertura::after {
+	--mt-nota: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 17.5a3 3 0 1 1-2-2.83V4l12-2v13.5a3 3 0 1 1-2-2.83V6.3L9 7.6z'/%3E%3C/svg%3E");
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+	background: var(--wp--preset--color--accent-2);
+	-webkit-mask: var(--mt-nota) no-repeat 97% 35% / 28px, var(--mt-nota) no-repeat 50% 99% / 24px;
+	mask: var(--mt-nota) no-repeat 97% 35% / 28px, var(--mt-nota) no-repeat 50% 99% / 24px;
+	animation: mt-battuta 0.6s ease-in-out 0.3s 4;
 }
 .mt-apertura .wp-block-cover__inner-container {
 	z-index: 3 !important; /* sopra le forme; il core con la foto forza z-index 1 con un selettore più specifico */
@@ -138,7 +152,8 @@ Text Domain: mytime
 		animation-timeline: view();
 		animation-range: entry 0% entry 60%;
 	}
-	.wp-block-post-content > h2.wp-block-heading::after {
+	.wp-block-post-content > h2.wp-block-heading::after,
+	.mt-iscriversi > h2.wp-block-heading::after {
 		animation: mt-tratto linear both;
 		animation-timeline: view();
 		animation-range: entry 40% cover 35%;
@@ -184,6 +199,13 @@ Text Domain: mytime
 	border-bottom-right-radius: 4px;
 	background: var(--wp--preset--color--accent-2);
 }
+/* Per i lettori di schermo: chi parla (il testo alternativo dopo "/" non si vede). */
+.mt-bolla-persona::before {
+	content: "" / "Persona: ";
+}
+.mt-bolla-noi::before {
+	content: "" / "ASD My Time: ";
+}
 .mt-bolla-noi {
 	align-self: flex-start;
 	border-bottom-left-radius: 4px;
@@ -215,15 +237,17 @@ Text Domain: mytime
 	.mt-bolla {
 		animation: mt-bolla linear both;
 		animation-timeline: --mt-chat;
-		animation-range: cover 45% cover 52%; /* dal quinto messaggio in poi */
+		animation-range: cover 60% cover 64%; /* dal settimo messaggio in poi */
 	}
 	/* nth-of-type conta anche l'intestazione: il primo messaggio è il secondo paragrafo. */
 	.mt-bolla:nth-of-type(2) { animation-range: cover 22% cover 28%; }
 	.mt-bolla:nth-of-type(3) { animation-range: cover 30% cover 36%; }
 	.mt-bolla:nth-of-type(4) { animation-range: cover 38% cover 44%; }
+	.mt-bolla:nth-of-type(5) { animation-range: cover 46% cover 52%; }
+	.mt-bolla:nth-of-type(6) { animation-range: cover 54% cover 60%; }
 
-	/* Su computer la sezione resta ferma sullo schermo mentre la conversazione avanza. */
-	@media (min-width: 782px) and (prefers-reduced-motion: no-preference) {
+	/* Su computer (e finestre abbastanza alte da contenere il telefono) la sezione resta ferma mentre la conversazione avanza. */
+	@media (min-width: 782px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
 		.mt-iscriversi {
 			min-height: 170vh;
 		}
@@ -231,10 +255,12 @@ Text Domain: mytime
 			position: sticky;
 			top: 12vh;
 		}
-		.mt-bolla { animation-range: cover 66% cover 72%; }
-		.mt-bolla:nth-of-type(2) { animation-range: cover 38% cover 45%; }
-		.mt-bolla:nth-of-type(3) { animation-range: cover 47% cover 54%; }
-		.mt-bolla:nth-of-type(4) { animation-range: cover 56% cover 63%; }
+		.mt-bolla { animation-range: cover 68% cover 72%; }
+		.mt-bolla:nth-of-type(2) { animation-range: cover 38% cover 43%; }
+		.mt-bolla:nth-of-type(3) { animation-range: cover 45% cover 50%; }
+		.mt-bolla:nth-of-type(4) { animation-range: cover 52% cover 57%; }
+		.mt-bolla:nth-of-type(5) { animation-range: cover 59% cover 63%; }
+		.mt-bolla:nth-of-type(6) { animation-range: cover 64% cover 68%; }
 	}
 }
 

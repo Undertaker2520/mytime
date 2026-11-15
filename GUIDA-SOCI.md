@@ -135,7 +135,8 @@ Per mettere la foto in una scheda nuova: clicca sul titolo della scheda, premi *
 
 Nella Home e in **Iscrizioni e costi** c'è un telefono con una conversazione su WhatsApp. I messaggi sono testo normale: clicca su un messaggio e riscrivilo, come qualsiasi paragrafo. Premi **Salva**.
 
-- Per aggiungere un messaggio: clicca su un messaggio, poi **Opzioni** (i tre puntini) → **Duplica**, e cambia il testo della copia.
+- Per aggiungere un messaggio: clicca su un messaggio, poi **Opzioni** (i tre puntini) → **Duplica**, e cambia il testo della copia. Sulla pagina i messaggi arrivano uno alla volta fino al sesto; dal settimo in poi compaiono insieme, quindi meglio non superare i sei.
+- Per far "parlare" l'altra persona: seleziona il messaggio, apri **Impostazioni** → scheda **Blocco** → **Avanzate** e nel campo **Classe/i CSS aggiuntiva/e** scrivi `mt-bolla mt-bolla-noi` (messaggio dell'associazione, a sinistra, magenta) oppure `mt-bolla mt-bolla-persona` (messaggio di chi scrive, a destra, rosa).
 - Se cambi gli orari di Zumba a Lunata, ricordati di correggere anche il messaggio del telefono.
 
 ---
