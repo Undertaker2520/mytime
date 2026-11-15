@@ -128,6 +128,98 @@ Text Domain: mytime
 	}
 }
 
+/* "Come iscriversi": telefono disegnato in CSS con i colori di My Time (niente grafica di WhatsApp). */
+.mt-telefono {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	max-width: 300px;
+	min-height: 26rem;
+	margin-inline: auto;
+	padding: 0 0.75rem 1.25rem;
+	border: 10px solid var(--wp--preset--color--contrast);
+	border-radius: 36px;
+	overflow: hidden; /* l'intestazione segue la curva della cornice */
+	background: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+.mt-telefono > * {
+	margin: 0 !important; /* lo spazio tra i messaggi lo dà gap */
+}
+.mt-telefono-testa {
+	margin-inline: -0.75rem !important;
+	padding: 0.9rem;
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+	font-weight: 700;
+	text-align: center;
+}
+.mt-bolla {
+	max-width: 85%;
+	padding: 0.6em 0.9em;
+	border-radius: 18px;
+	font-size: var(--wp--preset--font-size--small);
+	line-height: 1.4;
+}
+.mt-bolla-persona {
+	align-self: flex-end;
+	border-bottom-right-radius: 4px;
+	background: var(--wp--preset--color--accent-2);
+}
+.mt-bolla-noi {
+	align-self: flex-start;
+	border-bottom-left-radius: 4px;
+	background: var(--wp--preset--color--accent-1);
+	color: var(--wp--preset--color--base);
+}
+@media (max-width: 781px) {
+	/* Su telefono: titolo, poi il telefono, poi i passi. */
+	.mt-iscriversi .wp-block-column:has(.mt-telefono) {
+		order: -1;
+	}
+}
+.mt-passi li {
+	margin-block: 0.5rem;
+	font-size: var(--wp--preset--font-size--large);
+}
+
+/* I messaggi arrivano uno dopo l'altro mentre si scorre la sezione. Ogni sezione ha la sua timeline. */
+@keyframes mt-bolla {
+	from {
+		opacity: 0;
+		transform: translateY(10px) scale(0.96);
+	}
+}
+@supports (animation-timeline: view()) {
+	.mt-iscriversi {
+		view-timeline: --mt-chat block;
+	}
+	.mt-bolla {
+		animation: mt-bolla linear both;
+		animation-timeline: --mt-chat;
+		animation-range: cover 45% cover 52%; /* dal quinto messaggio in poi */
+	}
+	/* nth-of-type conta anche l'intestazione: il primo messaggio è il secondo paragrafo. */
+	.mt-bolla:nth-of-type(2) { animation-range: cover 22% cover 28%; }
+	.mt-bolla:nth-of-type(3) { animation-range: cover 30% cover 36%; }
+	.mt-bolla:nth-of-type(4) { animation-range: cover 38% cover 44%; }
+
+	/* Su computer la sezione resta ferma sullo schermo mentre la conversazione avanza. */
+	@media (min-width: 782px) and (prefers-reduced-motion: no-preference) {
+		.mt-iscriversi {
+			min-height: 170vh;
+		}
+		.mt-iscriversi > .wp-block-columns {
+			position: sticky;
+			top: 12vh;
+		}
+		.mt-bolla { animation-range: cover 66% cover 72%; }
+		.mt-bolla:nth-of-type(2) { animation-range: cover 38% cover 45%; }
+		.mt-bolla:nth-of-type(3) { animation-range: cover 47% cover 54%; }
+		.mt-bolla:nth-of-type(4) { animation-range: cover 56% cover 63%; }
+	}
+}
+
 /* "Riduci movimento" attivo: niente animazioni né transizioni. */
 @media (prefers-reduced-motion: reduce) {
 	*,
