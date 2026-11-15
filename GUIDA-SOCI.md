@@ -108,7 +108,39 @@ Quando l'avviso non serve più: **Articoli**, passa con il mouse sopra il titolo
 
 ---
 
-## 6. Il riassunto delle pagine (facoltativo)
+## 6. Cambiare una foto
+
+Le foto attuali sono **provvisorie**, prese da un archivio gratuito: vanno sostituite con quelle dell'associazione appena ci sono. Usa solo foto in cui chi compare è d'accordo, e **mai foto di minorenni** senza il consenso scritto dei genitori.
+
+### La foto grande della Home
+
+1. **Pagine** → **Home**.
+2. Clicca sulla foto in alto (non sul testo): si seleziona la **Copertina**.
+3. Nella barra che compare sopra premi **Sostituisci** → **Apri la libreria dei media** (o carica una foto dal computer) e scegli la foto.
+4. Controlla che il testo bianco si legga bene. Se la foto è molto chiara, in **Impostazioni** → scheda **Stili** alza l'**Opacità dell'overlay** (70 va bene quasi sempre).
+5. Premi **Salva**.
+
+### La foto di un corso o di una sede
+
+1. Apri la pagina (**Corsi** o **Sedi e orari**) e clicca sulla foto in cima alla scheda.
+2. Nella barra sopra la foto premi **Sostituisci** e scegli la nuova foto.
+3. In **Impostazioni** scrivi il **Testo alternativo**: una frase che descrive la foto a chi non la vede, per esempio *Lezione di pilates nella palestra di Camigliano*.
+4. Premi **Salva**.
+
+Per mettere la foto in una scheda nuova: clicca sul titolo della scheda, premi **+** sopra di esso, scegli **Immagine** e poi la foto.
+
+---
+
+## 7. Cambiare i messaggi del telefono
+
+Nella Home e in **Iscrizioni e costi** c'è un telefono con una conversazione su WhatsApp. I messaggi sono testo normale: clicca su un messaggio e riscrivilo, come qualsiasi paragrafo. Premi **Salva**.
+
+- Per aggiungere un messaggio: clicca su un messaggio, poi **Opzioni** (i tre puntini) → **Duplica**, e cambia il testo della copia.
+- Se cambi gli orari di Zumba a Lunata, ricordati di correggere anche il messaggio del telefono.
+
+---
+
+## 8. Il riassunto delle pagine (facoltativo)
 
 Ogni pagina ha un **riassunto** di una o due frasi: è il testo che Google mostra sotto il titolo nei risultati di ricerca. Lo trovi in **Impostazioni** → scheda **Pagina** → **Modifica riassunto** (negli articoli: **Aggiungi un riassunto…**). Se cambi molto una pagina, aggiorna anche il suo riassunto.
 

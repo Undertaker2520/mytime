@@ -149,7 +149,8 @@ Text Domain: mytime
 	border: 10px solid var(--wp--preset--color--contrast);
 	border-radius: 36px;
 	overflow: hidden; /* l'intestazione segue la curva della cornice */
-	background: var(--wp--preset--color--base);
+	/* nero dietro l'intestazione, così negli angoli curvi non filtra il bianco */
+	background: linear-gradient(var(--wp--preset--color--contrast) 3rem, var(--wp--preset--color--base) 3rem);
 	color: var(--wp--preset--color--contrast);
 }
 .mt-telefono > * {

@@ -84,12 +84,16 @@ tema/
 ├─ theme.json        palette, font, dimensioni, pulsanti: l'unica fonte di colori e font
 ├─ functions.php     carica style.css, categoria "My Time" per i pattern
 ├─ parts/footer.html piè di pagina dell'associazione
-└─ patterns/         apertura, scheda corso, scheda sede, tabella orari, invito a contattarci
+└─ patterns/         apertura, scheda corso, scheda sede, tabella orari, invito a contattarci, come iscriversi
 ```
 
-- `style.css` è caricato da `functions.php`, perché Twenty Twenty-Five non carica lo `style.css` del child. Niente SCSS né jQuery: le variabili sono quelle di `theme.json` (`var(--wp--preset--color--accent-1)` ecc.).
+- `style.css` è caricato da `functions.php`, perché Twenty Twenty-Five non carica lo `style.css` del child. La versione nell'URL è la data di modifica del file, così i browser non tengono un CSS vecchio. Solo la prima immagine di ogni pagina si carica subito, le altre in lazy. Niente SCSS né jQuery: le variabili sono quelle di `theme.json` (`var(--wp--preset--color--accent-1)` ecc.).
 - Animazioni solo CSS: entrata dell'Apertura (il titolo resta fermo, è l'elemento LCP), schede di corsi e sedi che compaiono scorrendo (`animation-timeline: view()`, ferme dove non supportato), tutto spento con "riduci movimento".
-- L'Apertura è un blocco Copertina: si può aggiungere una foto di sfondo, che resta coperta al 90% dal rosa chiaro così il testo si legge sempre (contrasto ≥ 11:1 anche con una foto nera).
+- L'Apertura è un blocco Copertina con foto e velatura nera al 70%, testo bianco (contrasto ≥ 5,4:1 anche sul punto più chiaro della foto). Il pattern, senza foto, è nero pieno.
+- Animazioni a tema ballo, solo CSS: forme colorate che saltano 4 volte (2,4 s) nell'Apertura, tratto magenta che si disegna sotto i titoli, schede che entrano con un passo alternato. Le colorazioni usano le variabili di `theme.json` (maschere e gradienti, niente colori nei SVG).
+- "Come iscriversi" (`mytime/come-iscriversi`): telefono disegnato in CSS con la chat su WhatsApp. I messaggi arrivano mentre si scorre (`view-timeline` per sezione); su computer la sezione resta ferma durante la conversazione. **Su Firefox** (che non supporta ancora le animazioni a scorrimento) e con "riduci movimento" i messaggi sono tutti visibili da subito.
+- Griglie di corsi e sedi e sezione "Come iscriversi" larghe fino a 1340 px; i paragrafi restano a 645 px (circa 75 caratteri per riga).
+- In locale `wp-config.php` ha `WP_DEVELOPMENT_MODE` = `theme`, così WordPress non tiene in cache l'elenco dei pattern. **Non** va messo su OVH.
 - I colori usano i nomi di Twenty Twenty-Five (`base`, `contrast`, `accent-1`…), così i template del tema padre restano coerenti. Contrasti WCAG AA verificati: magenta `#E2007A` solo come sfondo dei pulsanti (testo bianco 4,65:1), magenta scuro `#B8005F` per i link.
 - Font: Manrope, self-hosted dal tema padre.
 - I soci possono scegliere solo colori e dimensioni del tema (`custom: false`).
