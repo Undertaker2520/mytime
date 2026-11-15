@@ -41,7 +41,7 @@ Nicholas lavora a tempo pieno e sta preparando due esami universitari (gennaio�
 - Tono **allegro ed energico ma ordinato**, come i volantini: "Movimento · Energia · Divertimento". È un'associazione per persone di tutte le età, non una palestra aggressiva.
 - Mobile-first: la maggior parte delle visite arriverà da telefono, spesso da Instagram.
 - Pulsanti grandi per chiamare e scrivere su WhatsApp.
-- Foto: solo quelle fornite dall'associazione. Ci sono pochi iscritti minorenni (2–3): **nessuna foto di minori senza consenso scritto dei genitori**; nel dubbio usare segnaposto o immagini senza volti riconoscibili.
+- Foto: solo quelle fornite dall'associazione. Eccezione temporanea (decisione di Nicholas, 2026-11-15): segnaposto gratuiti da Pexels, solo adulti, salvati nella Libreria media e non nel repository, elencati nel README e da sostituire con le foto vere. Ci sono pochi iscritti minorenni (2–3): **nessuna foto di minori senza consenso scritto dei genitori**; nel dubbio usare segnaposto o immagini senza volti riconoscibili.
 
 ## Struttura
 

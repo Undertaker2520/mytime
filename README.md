@@ -26,7 +26,7 @@ Tutto ciò che sul sito è scritto **[DA COMPLETARE: …]**. In ordine di priori
 - [ ] Approvare le descrizioni degli otto corsi (proposte da Nicholas, pagina Corsi)
 - [ ] Per ogni corso: a chi è rivolto e nome dell'istruttore, con il suo consenso a pubblicarlo
 - [ ] Descrizione di Fit & Walk e dettagli di My Time Performance (Home)
-- [ ] Foto da usare; per i minori serve il consenso scritto dei genitori
+- [ ] Foto vere da usare al posto dei segnaposto Pexels (vedi "Foto segnaposto"); per i minori serve il consenso scritto dei genitori
 - [ ] Rilettura dell'informativa Privacy (ora è una bozza), con hosting e tempi di conservazione dei log
 
 **3. Per la messa in sicurezza**
@@ -35,6 +35,26 @@ Tutto ciò che sul sito è scritto **[DA COMPLETARE: …]**. In ordine di priori
 - [ ] (Nicholas) In `GUIDA-SOCI.md`: indirizzo del sito e contatto di Nicholas per i soci
 - [ ] Nomi ed email dei soci che avranno un account Editore (ognuno con un'app di autenticazione sul telefono)
 - [ ] Account Google Drive o Dropbox dell'associazione per i backup
+
+## Foto segnaposto
+
+Finché l'associazione non manda le sue foto, il sito usa foto gratuite di [Pexels](https://www.pexels.com/license/) (uso libero, attribuzione non obbligatoria). Sono solo nella Libreria media di WordPress, **non** nel repository. La licenza vieta di far credere che le persone ritratte sostengano l'associazione: vanno sostituite appena possibile.
+
+| Dove | Foto | Autore |
+|---|---|---|
+| Apertura (Home) | [12086683](https://www.pexels.com/photo/women-dancing-in-the-hall-12086683/) | Wellness Gallery Catalyst Foundation |
+| Zumba | [5936039](https://www.pexels.com/photo/group-of-people-in-a-fitness-class-5936039/) | David Awokoya |
+| Pilates | [25596885](https://www.pexels.com/photo/women-stretching-on-yoga-mats-at-gym-25596885/) | Ahmet Kurt |
+| Aerofantasy | [12086684](https://www.pexels.com/photo/women-dancing-in-the-hall-12086684/) | Wellness Gallery Catalyst Foundation |
+| Allenamento funzionale | [6339345](https://www.pexels.com/photo/people-in-the-fitness-center-doing-jumping-jacks-6339345/) | Pavel Danilyuk |
+| GAG | [864091](https://www.pexels.com/photo/woman-wearing-white-and-black-sweat-suit-doing-curl-ups-864091/) | Andrea Piacquadio |
+| Step GAG | [6285206](https://www.pexels.com/photo/a-person-doing-exercise-6285206/) | Gustavo Fring |
+| HIIT GAG | [6339341](https://www.pexels.com/photo/a-group-of-people-running-in-place-6339341/) | Pavel Danilyuk |
+| Tonificazione | [903171](https://www.pexels.com/photo/women-having-exercise-using-dumbbells-903171/) | Andrea Piacquadio |
+| Sede Camigliano | [7186312](https://www.pexels.com/photo/shiny-floor-in-gym-7186312/) | cottonbro studio |
+| Sede Lunata | [7201151](https://www.pexels.com/photo/wooden-floors-inside-a-gym-7201151/) | cottonbro studio |
+
+Nella Libreria media si riconoscono dal titolo "Segnaposto Pexels: …".
 
 ## Avvio in locale
 
