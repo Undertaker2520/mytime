@@ -74,7 +74,7 @@ Serve [LocalWP](https://localwp.com/) con un sito chiamato `mytime`.
 
 > ⚠️ Per togliere una junction usa solo `cmd /c rmdir "<percorso della junction>"`. `Remove-Item -Recurse` può cancellare i file veri. Togli le junction anche prima di eliminare il sito in Local.
 
-Le pagine (Home, Corsi, Sedi e orari, Iscrizioni e costi, Contatti, Privacy) e il menu stanno nel database di WordPress, non nel repository.
+Le pagine (Home, Corsi, Sedi e orari, Iscrizioni e costi, Contatti, Privacy) e il menu stanno nel database di WordPress, non nel repository. Per ricrearle in locale c'è `strumenti/crea-pagine.php` (`wp eval-file`): **sovrascrive** il contenuto delle pagine (i riassunti restano, la Privacy non viene toccata) e usa le foto segnaposto della Libreria media. Non va usato sul sito online.
 
 ## Struttura del tema
 
@@ -92,7 +92,8 @@ tema/
 - L'Apertura è un blocco Copertina con foto e velatura nera al 70%, testo bianco (contrasto ≥ 5,4:1 anche sul punto più chiaro della foto). Il pattern, senza foto, è nero pieno.
 - Animazioni a tema ballo, solo CSS: forme colorate che saltano 4 volte (2,4 s) nell'Apertura, tratto magenta che si disegna sotto i titoli, schede che entrano con un passo alternato. Le colorazioni usano le variabili di `theme.json` (maschere e gradienti, niente colori nei SVG).
 - "Come iscriversi" (`mytime/come-iscriversi`): telefono disegnato in CSS con la chat su WhatsApp. I messaggi arrivano mentre si scorre (`view-timeline` per sezione); su computer la sezione resta ferma durante la conversazione. **Su Firefox** (che non supporta ancora le animazioni a scorrimento) e con "riduci movimento" i messaggi sono tutti visibili da subito.
-- Griglie di corsi e sedi e sezione "Come iscriversi" larghe fino a 1340 px; i paragrafi restano a 645 px (circa 75 caratteri per riga).
+- Contenitore unico di 1200 px (`contentSize` = `wideSize` in `theme.json`): header, contenuto e footer hanno gli stessi bordi. Paragrafi e liste del contenuto al massimo 70ch, allineati a sinistra; testo dell'Apertura al massimo 40rem.
+- Su computer le sezioni usano Colonne e Griglie adattive (`columnCount` + `minimumColumnWidth`: le colonne calano da sole su tablet e telefono). Home: anteprima di 8 corsi cliccabili verso `/corsi/#ancora`, sedi a 2 colonne, altre proposte e avvisi a 3; Corsi a 3 colonne; Sedi e orari scheda | tabella; Iscrizioni, Contatti, Invito e footer a colonne.
 - In locale `wp-config.php` ha `WP_DEVELOPMENT_MODE` = `theme`, così WordPress non tiene in cache l'elenco dei pattern. **Non** va messo su OVH.
 - I colori usano i nomi di Twenty Twenty-Five (`base`, `contrast`, `accent-1`…), così i template del tema padre restano coerenti. Contrasti WCAG AA verificati: magenta `#E2007A` solo come sfondo dei pulsanti (testo bianco 4,65:1), magenta scuro `#B8005F` per i link.
 - Font: Manrope, self-hosted dal tema padre.

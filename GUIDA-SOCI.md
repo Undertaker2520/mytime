@@ -83,15 +83,16 @@ Tieni le righe in ordine di giorno e di ora: lunedì in alto, venerdì in fondo.
 
    Cancella ogni testo tra parentesi quadre `[DA COMPLETARE…]` e scrivi l'informazione vera.
 5. Il colore del bordo, se vuoi cambiarlo: clicca sul bordo della scheda, apri **Impostazioni** → scheda **Stili** → **Bordi e ombre** → **Bordo**, clicca sul pallino colorato e scegli uno dei colori **Corso** (azzurro, viola, verde, giallo).
-6. Premi **Salva**.
+6. Dai alla scheda un nome per i link: con la scheda selezionata, **Impostazioni** → scheda **Blocco** → **Avanzate** → **Ancora HTML**, scrivi il nome del corso in minuscolo con i trattini al posto degli spazi (per esempio `step-gag`).
+7. Premi **Salva**.
 
 Poi ricordati di aggiungere il corso anche:
 - nella tabella della sua palestra, in **Sedi e orari** (vedi sopra);
-- nell'elenco **I nostri corsi** della pagina **Home**.
+- tra le schede piccole di **I nostri corsi** nella pagina **Home**: clicca su una scheda piccola, **Opzioni** (i tre puntini) → **Duplica**, poi nella copia cambia foto, nome e palestra. Sul nome, premi **Modifica link** e scrivi `/corsi/#` seguito dall'Ancora HTML del passo 6 (per esempio `/corsi/#step-gag`).
 
 ### Togliere un corso
 
-Clicca sul bordo della scheda, poi nella barra che compare premi **Opzioni** (i tre puntini) → **Elimina**. Togli anche le sue righe dalla tabella in **Sedi e orari** e il nome dalla **Home**. Premi **Salva**.
+Clicca sul bordo della scheda, poi nella barra che compare premi **Opzioni** (i tre puntini) → **Elimina**. Togli anche le sue righe dalla tabella in **Sedi e orari** e la sua scheda piccola dalla **Home**. Premi **Salva**.
 
 ---
 
