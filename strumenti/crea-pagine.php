@@ -10,8 +10,17 @@
  * La Privacy non viene toccata. Link interni relativi, così funzionano anche su OVH.
  */
 
+if ( 'local' !== wp_get_environment_type() ) {
+	WP_CLI::error( 'Solo per il sito locale: questo script sovrascrive le pagine.' );
+}
+
+// Se un pattern manca (tema non attivo, cache) ci si ferma prima di scrivere qualsiasi pagina.
 function mt_pattern( $slug ) {
-	return WP_Block_Patterns_Registry::get_instance()->get_registered( 'mytime/' . $slug )['content'];
+	$p = WP_Block_Patterns_Registry::get_instance()->get_registered( 'mytime/' . $slug );
+	if ( ! $p ) {
+		WP_CLI::error( "Pattern mancante: mytime/$slug. Il tema My Time è attivo?" );
+	}
+	return $p['content'];
 }
 function mt_foto( $nome ) {
 	$a = get_posts( array( 'post_type' => 'attachment', 'title' => 'Segnaposto Pexels: ' . $nome, 'numberposts' => 1, 'post_status' => 'inherit' ) );
@@ -123,7 +132,7 @@ foreach ( $corsi as $c ) {
 	$schede .= mt_corso( $c[0], $c[1], $c[2], $c[3], $c[4], $c[5] );
 }
 $avvisi = '<!-- wp:query {"queryId":1,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false}} -->
-<div class="wp-block-query"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
+<div class="wp-block-query"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"16rem"}} -->
 <!-- wp:post-title {"level":3,"isLink":true} /-->
 
 <!-- wp:post-date /-->
