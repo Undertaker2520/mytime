@@ -71,6 +71,7 @@ Serve [LocalWP](https://localwp.com/) con un sito chiamato `mytime`.
 
 3. In WP Admin attiva il tema **My Time** (Twenty Twenty-Five deve restare installato) e il plugin **My Time – Sicurezza**.
 4. Per provare `.htaccess` il sito Local deve usare Apache (Overview → Web server): copia `server/.htaccess` nella cartella `app\public`. L'Apache di Local non carica `mod_headers`: aggiungi `LoadModule headers_module "{{ modules }}/mod_headers.so"` in `Local Sites\mytime\conf\apache\modules.conf.hbs` e riavvia il sito, altrimenti gli header di sicurezza non partono.
+5. In locale usa sempre `http://mytime.local` (è l'indirizzo del sito in WordPress). Se il login viene bloccato con "violates … form-action 'self'", il browser ha memorizzato HSTS da una visita in https: in Chrome apri `chrome://net-internals/#hsts`, in "Delete domain security policies" scrivi `mytime.local` e premi Delete. `server/.htaccess` invia HSTS solo fuori da `*.local`.
 
 > ⚠️ Per togliere una junction usa solo `cmd /c rmdir "<percorso della junction>"`. `Remove-Item -Recurse` può cancellare i file veri. Togli le junction anche prima di eliminare il sito in Local.
 

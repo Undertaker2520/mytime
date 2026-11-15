@@ -20,7 +20,8 @@ Options -Indexes
 </FilesMatch>
 
 <IfModule mod_headers.c>
-	Header always set Strict-Transport-Security "max-age=31536000"
+	# HSTS solo sul sito online: sul sito locale (*.local, in http) bloccherebbe il login dopo una visita in https.
+	Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTP_HOST} !~ /\.local$/"
 	Header always set X-Content-Type-Options "nosniff"
 	Header always set X-Frame-Options "SAMEORIGIN"
 	Header always set Referrer-Policy "strict-origin-when-cross-origin"
