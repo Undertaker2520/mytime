@@ -117,7 +117,7 @@ Le foto attuali sono **provvisorie**, prese da un archivio gratuito: vanno sosti
 1. **Pagine** → **Home**.
 2. Clicca sulla foto in alto (non sul testo): si seleziona la **Copertina**.
 3. Nella barra che compare sopra premi **Sostituisci** → **Apri la libreria dei media** (o carica una foto dal computer) e scegli la foto.
-4. Controlla che il testo bianco si legga bene. Se la foto è molto chiara, in **Impostazioni** → scheda **Stili** alza l'**Opacità dell'overlay** (70 va bene quasi sempre).
+4. Controlla che il testo bianco si legga bene. L'**Opacità dell'overlay** è a 70 e va bene quasi sempre; se la foto è molto chiara, in **Impostazioni** → scheda **Stili** alzala a 80 o 90. Non scendere sotto 70.
 5. Premi **Salva**.
 
 ### La foto di un corso o di una sede

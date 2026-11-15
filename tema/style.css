@@ -56,11 +56,14 @@ Text Domain: mytime
 		transform: translateY(-10px) scale(1.06);
 	}
 }
+.mt-apertura {
+	background-color: var(--wp--preset--color--contrast); /* senza foto resta nera, con la velatura al 70% */
+}
 .mt-apertura::before {
 	content: "";
 	position: absolute;
 	inset: 0;
-	z-index: 1;
+	z-index: 2; /* sopra la velatura (z-index 1 nel core) */
 	pointer-events: none;
 	background:
 		radial-gradient(circle at 76% 4%, var(--wp--preset--color--corso-giallo) 0 12px, transparent 13px),
@@ -71,7 +74,12 @@ Text Domain: mytime
 	animation: mt-battuta 0.6s ease-in-out 4;
 }
 .mt-apertura .wp-block-cover__inner-container {
-	z-index: 2; /* sopra le forme, che stanno sopra la velatura */
+	z-index: 3 !important; /* sopra le forme; il core con la foto forza z-index 1 con un selettore più specifico */
+}
+/* Su sfondo scuro il bordo di focus nero non si vedrebbe. */
+.mt-apertura .wp-element-button:focus,
+.mt-apertura .wp-element-button:focus-visible {
+	outline-color: var(--wp--preset--color--base);
 }
 
 /* Entrata dell'apertura: ciò che segue il titolo sale piano. Il titolo resta fermo (è l'elemento LCP). */
