@@ -9,6 +9,14 @@ add_action(
 	}
 );
 
+// Solo la prima immagine della pagina (la foto dell'Apertura o della prima scheda) si carica subito; le altre quando servono.
+add_filter(
+	'wp_omit_loading_attr_threshold',
+	function () {
+		return 1;
+	}
+);
+
 // Categoria "My Time" nell'inseritore dei blocchi: i soci trovano i pattern del sito tutti insieme.
 add_action(
 	'init',
