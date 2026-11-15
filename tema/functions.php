@@ -10,6 +10,17 @@ add_action(
 	}
 );
 
+// Script della mappa solo nelle pagine che la contengono (Contatti): nel resto del sito niente JavaScript nostro.
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		if ( is_singular() && false !== strpos( (string) get_post_field( 'post_content', get_queried_object_id() ), 'mt-mappa' ) ) {
+			$file = get_stylesheet_directory() . '/assets/js/mappa.js';
+			wp_enqueue_script( 'mytime-mappa', get_theme_file_uri( 'assets/js/mappa.js' ), array(), (string) filemtime( $file ), array( 'strategy' => 'defer', 'in_footer' => true ) );
+		}
+	}
+);
+
 // Solo la prima immagine della pagina (la foto dell'Apertura o della prima scheda) si carica subito; le altre quando servono.
 add_filter(
 	'wp_omit_loading_attr_threshold',

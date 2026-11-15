@@ -17,6 +17,7 @@ Nicholas lavora a tempo pieno e sta preparando due esami universitari (gennaio�
 - **Pattern di blocchi** riutilizzabili per le parti ripetute: "Scheda corso", "Scheda sede", "Tabella orari", "Apertura", "Invito a contattarci". L'editor inserisce un pattern e cambia solo i testi.
 - **Plugin**: il minimo indispensabile, ognuno da proporre e motivare prima di installarlo. Candidati: Two Factor (2FA per gli account), un plugin di backup (es. UpdraftPlus). **Niente moduli**: il sito non raccoglie iscrizioni, pagamenti o dati personali (decisione dell'associazione).
 - Font **self-hosted** (dichiarati in `theme.json`), mai Google Fonts da CDN. Nessuna risorsa di terze parti: niente embed di Instagram, Facebook o Google Maps (solo link), niente analytics, nessun cookie di profilazione. Così il sito non richiede banner cookie.
+- Eccezione (decisione di Nicholas, 2026-11-15): nella pagina Contatti una mappa interattiva per calcolare la distanza dalle palestre. Leaflet è servito dal tema; tessere e ricerca indirizzi vengono da OpenStreetMap **solo dopo il clic** su "Mostra la mappa"; il JavaScript si carica solo in quella pagina; la Privacy lo spiega.
 - Sviluppo in locale con **LocalWP** sul PC personale di Nicholas (Windows). Il tema vive in un repository Git privato.
 
 ## Hosting e pubblicazione

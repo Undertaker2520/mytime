@@ -212,7 +212,9 @@ $pagine = array(
 				mt_p( 'Email: <a href="mailto:mytime.asd@libero.it">mytime.asd@libero.it</a><br>Instagram: <a href="https://www.instagram.com/mytime.sd/">@mytime.sd</a><br>Facebook: <a href="https://www.facebook.com/profile.php?id=100063509229571">ASD My Time</a> [DA COMPLETARE: confermare che la pagina è ancora attiva]' )
 				. mt_p( '[DA COMPLETARE: a chi corrispondono i due numeri di telefono]' ),
 			)
-		),
+		)
+		. mt_h( 'Quanto sei lontano dalle palestre?' )
+		. mt_pattern( 'mappa-distanza' ),
 	),
 );
 
