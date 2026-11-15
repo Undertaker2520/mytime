@@ -31,7 +31,7 @@
 		<!-- /wp:button -->
 
 		<!-- wp:button {"className":"is-style-outline"} -->
-		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#">Scrivi su WhatsApp [DA COMPLETARE: numero]</a></div>
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://wa.me/393472177602?text=Ciao%21%20Vorrei%20informazioni%20sui%20corsi">Scrivici su WhatsApp</a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->

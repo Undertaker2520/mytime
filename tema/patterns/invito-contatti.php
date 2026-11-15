@@ -3,7 +3,7 @@
  * Title: Invito a contattarci
  * Slug: mytime/invito-contatti
  * Categories: mytime, call-to-action
- * Description: Fine pagina: invito, email e Instagram a sinistra, pulsanti per chiamare e scrivere a destra (uno sotto l'altro su telefono).
+ * Description: Fine pagina: invito, email e Instagram a sinistra; a destra, per ogni numero, i pulsanti Chiama e WhatsApp affiancati.
  */
 ?>
 <!-- wp:group {"align":"full","backgroundColor":"accent-2","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
@@ -32,10 +32,14 @@
 
 		<!-- wp:column {"verticalAlignment":"center"} -->
 		<div class="wp-block-column is-vertically-aligned-center">
-			<!-- wp:buttons {"layout":{"type":"flex","orientation":"vertical"}} -->
+			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
 				<!-- wp:button -->
 				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="tel:+393472177602">Chiama 347 2177602</a></div>
+				<!-- /wp:button -->
+
+				<!-- wp:button {"className":"is-style-outline"} -->
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://wa.me/393472177602?text=Ciao%21%20Vorrei%20informazioni%20sui%20corsi">WhatsApp 347 2177602</a></div>
 				<!-- /wp:button -->
 
 				<!-- wp:button -->
@@ -43,7 +47,7 @@
 				<!-- /wp:button -->
 
 				<!-- wp:button {"className":"is-style-outline"} -->
-				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#">Scrivi su WhatsApp [DA COMPLETARE: numero]</a></div>
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://wa.me/393451584374?text=Ciao%21%20Vorrei%20informazioni%20sui%20corsi">WhatsApp 345 1584374</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

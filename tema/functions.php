@@ -15,8 +15,10 @@ add_action(
 	'wp_enqueue_scripts',
 	function () {
 		if ( is_singular() && false !== strpos( (string) get_post_field( 'post_content', get_queried_object_id() ), 'mt-mappa' ) ) {
+			wp_enqueue_style( 'leaflet', get_theme_file_uri( 'assets/leaflet/leaflet.css' ), array(), '1.9.4' );
+			wp_enqueue_script( 'leaflet', get_theme_file_uri( 'assets/leaflet/leaflet.js' ), array(), '1.9.4', array( 'strategy' => 'defer', 'in_footer' => true ) );
 			$file = get_stylesheet_directory() . '/assets/js/mappa.js';
-			wp_enqueue_script( 'mytime-mappa', get_theme_file_uri( 'assets/js/mappa.js' ), array(), (string) filemtime( $file ), array( 'strategy' => 'defer', 'in_footer' => true ) );
+			wp_enqueue_script( 'mytime-mappa', get_theme_file_uri( 'assets/js/mappa.js' ), array( 'leaflet' ), (string) filemtime( $file ), array( 'strategy' => 'defer', 'in_footer' => true ) );
 		}
 	}
 );

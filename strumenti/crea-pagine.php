@@ -156,7 +156,11 @@ $avvisi = '<!-- wp:query {"queryId":1,"query":{"perPage":3,"pages":0,"offset":0,
 <!-- /wp:query -->
 
 ';
-$bottoni_contatti = '<!-- wp:buttons {"layout":{"type":"flex","orientation":"vertical"}} -->' . explode( '<!-- /wp:buttons -->', explode( '<!-- wp:buttons {"layout":{"type":"flex","orientation":"vertical"}} -->', $invito, 2 )[1] )[0] . "<!-- /wp:buttons -->\n\n";
+// Gli stessi pulsanti dell'invito (Chiama e WhatsApp per ogni numero), per la scheda di Contatti.
+$bottoni_contatti = '<!-- wp:buttons -->' . explode( '<!-- /wp:buttons -->', explode( '<!-- wp:buttons -->', $invito, 2 )[1] )[0] . "<!-- /wp:buttons -->\n\n";
+function mt_scheda_contatti( $interno ) {
+	return "<!-- wp:group {\"className\":\"mt-scheda-contatti\",\"backgroundColor\":\"accent-2\",\"style\":{\"border\":{\"radius\":\"16px\"},\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|40\",\"bottom\":\"var:preset|spacing|40\",\"left\":\"var:preset|spacing|40\",\"right\":\"var:preset|spacing|40\"}}}} -->\n<div class=\"wp-block-group mt-scheda-contatti has-accent-2-background-color has-background\" style=\"border-radius:16px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)\">$interno</div>\n<!-- /wp:group -->\n\n";
+}
 
 $pagine = array(
 	'home'               => array(
@@ -208,13 +212,16 @@ $pagine = array(
 		'Contatti',
 		mt_colonne(
 			array(
-				mt_p( 'Per informazioni su corsi, orari e iscrizioni chiamaci o scrivici: ti rispondiamo volentieri.' ) . $bottoni_contatti,
-				mt_p( 'Email: <a href="mailto:mytime.asd@libero.it">mytime.asd@libero.it</a><br>Instagram: <a href="https://www.instagram.com/mytime.sd/">@mytime.sd</a><br>Facebook: <a href="https://www.facebook.com/profile.php?id=100063509229571">ASD My Time</a> [DA COMPLETARE: confermare che la pagina è ancora attiva]' )
-				. mt_p( '[DA COMPLETARE: a chi corrispondono i due numeri di telefono]' ),
+				mt_scheda_contatti(
+					mt_h( 'Chiamaci o scrivici' )
+					. mt_p( 'Per informazioni su corsi, orari e iscrizioni: ti rispondiamo volentieri. Gli stessi numeri sono anche su WhatsApp.' )
+					. $bottoni_contatti
+					. mt_p( 'Email: <a href="mailto:mytime.asd@libero.it">mytime.asd@libero.it</a><br>Instagram: <a href="https://www.instagram.com/mytime.sd/">@mytime.sd</a><br>Facebook: <a href="https://www.facebook.com/profile.php?id=100063509229571">ASD My Time</a> [DA COMPLETARE: confermare che la pagina è ancora attiva]' )
+					. mt_p( '[DA COMPLETARE: a chi corrispondono i due numeri]', true )
+				),
+				mt_h( 'Quanto sei lontano dalle palestre?' ) . mt_pattern( 'mappa-distanza' ),
 			)
-		)
-		. mt_h( 'Quanto sei lontano dalle palestre?' )
-		. mt_pattern( 'mappa-distanza' ),
+		),
 	),
 );
 

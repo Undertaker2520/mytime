@@ -1,15 +1,13 @@
 /*
- * Mappa della pagina Contatti: Leaflet (servito dal tema) e OpenStreetMap si caricano solo al clic su "Mostra la mappa".
+ * Mappa della pagina Contatti: Leaflet (servito dal tema, caricato prima di questo file) con le tessere di OpenStreetMap.
  * La distanza è in linea d'aria; per il percorso stradale c'è il link a OpenStreetMap.
  */
 ( function () {
 	const box = document.querySelector( '.mt-mappa' );
-	if ( ! box ) {
+	if ( ! box || ! window.L ) {
 		return;
 	}
-	const base = document.currentScript.src;
 	const sedi = JSON.parse( box.dataset.sedi );
-	const pulsante = box.querySelector( '.mt-mappa-mostra' );
 	const form = box.querySelector( '.mt-mappa-form' );
 	const campo = form.querySelector( 'input' );
 	const area = box.querySelector( '.mt-mappa-area' );
@@ -26,41 +24,17 @@
 		return 2 * 6371 * Math.asin( Math.sqrt( h ) );
 	}
 
-	function carica( tag, attributi ) {
-		return new Promise( ( fatto, errore ) => {
-			const el = document.createElement( tag );
-			Object.assign( el, attributi, { onload: fatto, onerror: errore } );
-			document.head.appendChild( el );
-		} );
-	}
-
 	function messaggio( testo ) {
 		risultati.replaceChildren( Object.assign( document.createElement( 'li' ), { textContent: testo } ) );
 	}
 
-	pulsante.addEventListener( 'click', async () => {
-		pulsante.disabled = true;
-		try {
-			await carica( 'link', { rel: 'stylesheet', href: new URL( '../leaflet/leaflet.css', base ).href } );
-			await carica( 'script', { src: new URL( '../leaflet/leaflet.js', base ).href } );
-		} catch ( e ) {
-			pulsante.disabled = false;
-			messaggio( 'Non riesco a caricare la mappa: riprova più tardi.' );
-			return;
-		}
-		pulsante.hidden = true;
-		form.hidden = false;
-		area.hidden = false;
-		window.L.Icon.Default.imagePath = new URL( '../leaflet/images/', base ).href;
-		mappa = window.L.map( area, { scrollWheelZoom: false, zoomAnimation: ! ridotto, fadeAnimation: ! ridotto, markerZoomAnimation: ! ridotto } );
-		window.L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 19,
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-		} ).addTo( mappa );
-		sedi.forEach( ( s ) => window.L.marker( [ s.lat, s.lon ], { title: s.nome, alt: 'Palestra di ' + s.nome } ).addTo( mappa ).bindPopup( 'Palestra di ' + s.nome ) );
-		mappa.fitBounds( sedi.map( ( s ) => [ s.lat, s.lon ] ), { padding: [ 60, 60 ] } );
-		campo.focus();
-	} );
+	mappa = window.L.map( area, { scrollWheelZoom: false, zoomAnimation: ! ridotto, fadeAnimation: ! ridotto, markerZoomAnimation: ! ridotto } );
+	window.L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	} ).addTo( mappa );
+	sedi.forEach( ( s ) => window.L.marker( [ s.lat, s.lon ], { title: s.nome, alt: 'Palestra di ' + s.nome } ).addTo( mappa ).bindPopup( 'Palestra di ' + s.nome ) );
+	mappa.fitBounds( sedi.map( ( s ) => [ s.lat, s.lon ] ), { padding: [ 60, 60 ] } );
 
 	form.addEventListener( 'submit', async ( evento ) => {
 		evento.preventDefault();

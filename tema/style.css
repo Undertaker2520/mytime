@@ -136,10 +136,18 @@ Text Domain: mytime
 .mt-mappa-risultati:empty {
 	display: none;
 }
+.mt-mappa-nota {
+	font-size: var(--wp--preset--font-size--small);
+}
 .mt-mappa-area {
 	height: clamp(320px, 55vh, 520px);
 	border-radius: 16px;
 	z-index: 0; /* i controlli di Leaflet restano sotto l'header */
+}
+
+/* Pulsanti con contorno alti come quelli pieni (stesso padding di theme.json meno il bordo): affiancati restano allineati. */
+.wp-block-button.is-style-outline > .wp-block-button__link {
+	padding: calc(0.875rem - 1px) calc(1.75rem - 1px);
 }
 
 /* Pulsanti: cambio colore breve, pressione sul telefono. */
