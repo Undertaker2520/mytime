@@ -4,7 +4,7 @@ Template: twentytwentyfive
 Description: Tema del sito dell'ASD My Time di Capannori. Child theme di Twenty Twenty-Five.
 Author: Nicholas Barsanti
 Author URI: https://nicholasbarsanti.it
-Version: 0.2.0
+Version: 0.3.0
 Requires at least: 6.7
 Requires PHP: 7.4
 Text Domain: mytime
@@ -32,14 +32,42 @@ Text Domain: mytime
 	background: var(--wp--preset--color--base);
 }
 
-/* Titoli di sezione: tratto magenta "a pennello" sotto, decorativo. */
+/* Titoli di sezione: tratto magenta "a pennello" sotto, decorativo. Il SVG fa solo da maschera, il colore viene da theme.json. */
 .wp-block-post-content > h2.wp-block-heading::after {
+	--mt-pennello: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 10'%3E%3Cpath d='M2 7c10-5 20-5 30-2s20 3 30-3' fill='none' stroke='black' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
 	content: "";
 	display: block;
 	width: 4rem;
 	height: 0.6rem;
 	margin-top: 0.4rem;
-	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 10'%3E%3Cpath d='M2 7c10-5 20-5 30-2s20 3 30-3' fill='none' stroke='%23E2007A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left center / contain;
+	background: var(--wp--preset--color--accent-1);
+	-webkit-mask: var(--mt-pennello) no-repeat left center / contain;
+	mask: var(--mt-pennello) no-repeat left center / contain;
+	transform-origin: left center;
+}
+
+/* Apertura: forme colorate dei volantini che saltano a tempo 4 volte (2,4 s) e poi si fermano. */
+@keyframes mt-battuta {
+	50% {
+		transform: translateY(-10px) scale(1.06);
+	}
+}
+.mt-apertura::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	background:
+		radial-gradient(circle at 5% 7%, var(--wp--preset--color--corso-giallo) 0 12px, transparent 13px),
+		radial-gradient(circle at 94% 9%, transparent 0 9px, var(--wp--preset--color--corso-azzurro) 10px 14px, transparent 15px),
+		radial-gradient(circle at 96% 62%, var(--wp--preset--color--accent-1) 0 16px, transparent 17px),
+		radial-gradient(circle at 4% 93%, transparent 0 10px, var(--wp--preset--color--corso-verde) 11px 15px, transparent 16px),
+		radial-gradient(circle at 62% 96%, var(--wp--preset--color--corso-viola) 0 8px, transparent 9px);
+	animation: mt-battuta 0.6s ease-in-out 4;
+}
+.mt-apertura .wp-block-cover__inner-container {
+	z-index: 2; /* sopra le forme, che stanno sopra la velatura */
 }
 
 /* Entrata dell'apertura: ciò che segue il titolo sale piano. Il titolo resta fermo (è l'elemento LCP). */
@@ -60,13 +88,43 @@ Text Domain: mytime
 .mt-apertura .wp-block-cover__inner-container > :nth-child(4) { animation-delay: 0.12s; }
 .mt-apertura .wp-block-cover__inner-container > :nth-child(5) { animation-delay: 0.18s; }
 
-/* Schede di corsi e sedi: compaiono mentre scorri. Dove il browser non lo supporta restano ferme. */
+/* Schede di corsi e sedi: entrano con un passo di lato, alternato come in una coreografia. */
+@keyframes mt-passo-sx {
+	from {
+		opacity: 0;
+		transform: translateX(-24px) rotate(-2deg);
+	}
+}
+@keyframes mt-passo-dx {
+	from {
+		opacity: 0;
+		transform: translateX(24px) rotate(2deg);
+	}
+}
+@keyframes mt-tratto {
+	from {
+		transform: scaleX(0);
+	}
+}
+
+/* Animazioni legate allo scorrimento. Dove il browser non le supporta (Firefox) tutto resta visibile e fermo. */
 @supports (animation-timeline: view()) {
-	.mt-scheda-corso,
-	.mt-scheda-sede {
-		animation: mt-entra linear both;
+	.mt-scheda-corso:nth-child(odd),
+	.mt-scheda-sede:nth-child(odd) {
+		animation: mt-passo-sx linear both;
 		animation-timeline: view();
 		animation-range: entry 0% entry 60%;
+	}
+	.mt-scheda-corso:nth-child(even),
+	.mt-scheda-sede:nth-child(even) {
+		animation: mt-passo-dx linear both;
+		animation-timeline: view();
+		animation-range: entry 0% entry 60%;
+	}
+	.wp-block-post-content > h2.wp-block-heading::after {
+		animation: mt-tratto linear both;
+		animation-timeline: view();
+		animation-range: entry 40% cover 35%;
 	}
 }
 
