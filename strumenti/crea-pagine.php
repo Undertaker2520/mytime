@@ -162,6 +162,8 @@ function mt_scheda_contatti( $interno ) {
 	return "<!-- wp:group {\"className\":\"mt-scheda-contatti\",\"backgroundColor\":\"accent-2\",\"style\":{\"border\":{\"radius\":\"16px\"},\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|40\",\"bottom\":\"var:preset|spacing|40\",\"left\":\"var:preset|spacing|40\",\"right\":\"var:preset|spacing|40\"}}}} -->\n<div class=\"wp-block-group mt-scheda-contatti has-accent-2-background-color has-background\" style=\"border-radius:16px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)\">$interno</div>\n<!-- /wp:group -->\n\n";
 }
 
+$mappa = mt_h( 'Quanto sei lontano dalle palestre?' ) . mt_pattern( 'mappa-distanza' );
+
 $pagine = array(
 	'home'               => array(
 		'Home',
@@ -184,13 +186,14 @@ $pagine = array(
 	),
 	'corsi'              => array(
 		'Corsi',
-		mt_p( $periodo ) . mt_griglia( $schede, 3, '18rem' ) . mt_p( '[DA COMPLETARE: Step e Stretching sono attivi quest\'anno? Dove e quando?]' ) . $invito,
+		mt_p( $periodo ) . mt_griglia( $schede, 3, '18rem' ) . mt_p( '[DA COMPLETARE: Step e Stretching sono attivi quest\'anno? Dove e quando?]' ) . $mappa . $invito,
 	),
 	'sedi-e-orari'       => array(
 		'Sedi e orari',
 		mt_p( 'Orari 2026-2027. ' . $periodo )
 		. mt_colonne( array( $sede_c, mt_orari( 'Camigliano', $camigliano ) ) )
 		. mt_colonne( array( $sede_l, mt_orari( 'Lunata', $lunata ) ) )
+		. $mappa
 		. $invito,
 	),
 	'iscrizioni-e-costi' => array(
@@ -222,7 +225,7 @@ $pagine = array(
 					. mt_p( 'Email: <a href="mailto:mytime.asd@libero.it">mytime.asd@libero.it</a><br>Instagram: <a href="https://www.instagram.com/mytime.sd/">@mytime.sd</a><br>Facebook: <a href="https://www.facebook.com/profile.php?id=100063509229571">ASD My Time</a> [DA COMPLETARE: confermare che la pagina è ancora attiva]' )
 					. mt_p( '[DA COMPLETARE: a chi corrispondono i due numeri]', true )
 				),
-				mt_h( 'Quanto sei lontano dalle palestre?' ) . mt_pattern( 'mappa-distanza' ),
+				$mappa,
 			)
 		),
 	),

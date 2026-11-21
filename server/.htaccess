@@ -31,7 +31,7 @@ Options -Indexes
 		Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; worker-src 'self' blob:; frame-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
 	</If>
 	<Else>
-		# OpenStreetMap: tessere della mappa e ricerca indirizzi, usate solo dopo il clic su "Mostra la mappa" (Contatti).
+		# OpenStreetMap: tessere della mappa (Corsi, Sedi e orari, Contatti) e ricerca indirizzi, solo quando il visitatore cerca.
 		Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tile.openstreetmap.org; font-src 'self' data:; connect-src 'self' https://nominatim.openstreetmap.org; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'"
 	</Else>
 </IfModule>

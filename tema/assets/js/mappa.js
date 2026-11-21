@@ -1,5 +1,5 @@
 /*
- * Mappa della pagina Contatti: Leaflet (servito dal tema, caricato prima di questo file) con le tessere di OpenStreetMap.
+ * Mappa di Corsi, Sedi e orari e Contatti: Leaflet (servito dal tema, caricato prima di questo file) con le tessere di OpenStreetMap.
  * La distanza è in linea d'aria; per il percorso stradale c'è il link a OpenStreetMap.
  */
 ( function () {

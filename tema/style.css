@@ -105,7 +105,7 @@ Text Domain: mytime
 	max-width: 70ch;
 }
 
-/* Mappa e distanza dalle palestre (pagina Contatti). */
+/* Mappa e distanza dalle palestre (Corsi, Sedi e orari, Contatti). */
 .mt-mappa {
 	display: grid;
 	gap: 1rem;
@@ -478,6 +478,8 @@ Text Domain: mytime
 
 /* 2. Fascia hot pink con i nomi dei corsi, leggermente inclinata. */
 .mt-fascia {
+	position: relative;
+	z-index: 4; /* sopra la velatura e le forme dell'Apertura, che altrimenti ne coprono l'angolo */
 	overflow: clip;
 	padding-block: 1rem;
 	rotate: -2deg;
@@ -570,7 +572,7 @@ Text Domain: mytime
 	}
 }
 
-/* Animazioni a scorrimento (1, 2, 3, 4, 5): ferme su Firefox e con "riduci movimento". */
+/* Animazioni a scorrimento (1, 2, 3, 5): ferme su Firefox e con "riduci movimento". */
 @keyframes mt-accendi {
 	from {
 		color: color-mix(in srgb, var(--wp--preset--color--contrast) 52%, var(--wp--preset--color--base)) /* grigio di partenza a 3,2:1: leggibile anche prima di accendersi */;
@@ -596,14 +598,6 @@ Text Domain: mytime
 	from {
 		opacity: 0;
 		translate: 0 0.35em; /* salita breve: non copre la riga sotto */
-	}
-}
-@keyframes mt-svela {
-	from {
-		clip-path: inset(0 0 100% 0);
-	}
-	to {
-		clip-path: inset(0);
 	}
 }
 @supports (animation-timeline: view()) {
@@ -633,13 +627,6 @@ Text Domain: mytime
 		.mt-numero:nth-child(2) .mt-numero-cifra { animation-range: entry 25% cover 40%; }
 		.mt-numero:nth-child(3) .mt-numero-cifra { animation-range: entry 40% cover 45%; }
 		.mt-numero:nth-child(4) .mt-numero-cifra { animation-range: entry 55% cover 50%; }
-		.mt-mini-corso img,
-		.mt-scheda-corso img,
-		.mt-scheda-sede img {
-			animation: mt-svela linear both;
-			animation-timeline: view();
-			animation-range: entry 10% cover 35%;
-		}
 		.mt-wordmark span {
 			animation: mt-sali linear both;
 			animation-timeline: view();

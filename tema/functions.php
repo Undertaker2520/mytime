@@ -10,7 +10,7 @@ add_action(
 	}
 );
 
-// Script della mappa solo nelle pagine che la contengono (Contatti): nel resto del sito niente JavaScript nostro.
+// Script della mappa solo nelle pagine che la contengono (Corsi, Sedi e orari, Contatti): nel resto del sito niente JavaScript nostro.
 add_action(
 	'wp_enqueue_scripts',
 	function () {
