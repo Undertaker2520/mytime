@@ -63,7 +63,7 @@ Text Domain: mytime
 	.mt-scheda-corso:hover {
 		translate: 0 -6px;
 		border-color: var(--wp--preset--color--accent-1) !important;
-		box-shadow: 0 18px 32px -18px color-mix(in srgb, var(--wp--preset--color--contrast) 45%, transparent);
+		box-shadow: 0 18px 32px -18px color-mix(in srgb, var(--wp--preset--color--accent-1) 35%, transparent);
 	}
 	.mt-scheda-corso .wp-block-image {
 		overflow: hidden;
@@ -206,7 +206,7 @@ Text Domain: mytime
 	}
 }
 .mt-apertura {
-	background-color: var(--wp--preset--color--contrast); /* senza foto resta nera, con la velatura al 70% */
+	background-color: var(--wp--preset--color--base); /* senza foto resta nera, con la velatura al 70% */
 }
 .mt-apertura::before {
 	content: "";
@@ -216,10 +216,10 @@ Text Domain: mytime
 	pointer-events: none;
 	background:
 		radial-gradient(circle at 76% 4%, var(--wp--preset--color--accent-1) 0 12px, transparent 13px),
-		radial-gradient(circle at 94% 9%, transparent 0 9px, var(--wp--preset--color--base) 10px 14px, transparent 15px),
+		radial-gradient(circle at 94% 9%, transparent 0 9px, var(--wp--preset--color--contrast) 10px 14px, transparent 15px),
 		radial-gradient(circle at 96% 62%, var(--wp--preset--color--accent-1) 0 16px, transparent 17px),
 		radial-gradient(circle at 4% 93%, transparent 0 10px, var(--wp--preset--color--accent-1) 11px 15px, transparent 16px),
-		radial-gradient(circle at 62% 96%, var(--wp--preset--color--base) 0 8px, transparent 9px);
+		radial-gradient(circle at 62% 96%, var(--wp--preset--color--contrast) 0 8px, transparent 9px);
 	animation: mt-battuta 0.6s ease-in-out 4;
 }
 /* Due note musicali, in controtempo rispetto ai cerchi (finiscono entro 2,7 s). */
@@ -230,7 +230,7 @@ Text Domain: mytime
 	inset: 0;
 	z-index: 2;
 	pointer-events: none;
-	background: var(--wp--preset--color--accent-2);
+	background: var(--wp--preset--color--contrast);
 	-webkit-mask: var(--mt-nota) no-repeat 97% 35% / 28px, var(--mt-nota) no-repeat 50% 99% / 24px;
 	mask: var(--mt-nota) no-repeat 97% 35% / 28px, var(--mt-nota) no-repeat 50% 99% / 24px;
 	animation: mt-battuta 0.6s ease-in-out 0.3s 4;
@@ -241,7 +241,7 @@ Text Domain: mytime
 /* Su sfondo scuro il bordo di focus nero non si vedrebbe. */
 .mt-apertura .wp-element-button:focus,
 .mt-apertura .wp-element-button:focus-visible {
-	outline-color: var(--wp--preset--color--base);
+	outline-color: var(--wp--preset--color--contrast);
 }
 
 /* Entrata dell'apertura: ciò che segue il titolo sale piano. Il titolo resta fermo (è l'elemento LCP). */
@@ -398,7 +398,7 @@ Text Domain: mytime
 	align-self: flex-start;
 	border-bottom-left-radius: 4px;
 	background: var(--wp--preset--color--accent-1);
-	color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
 }
 @media (max-width: 781px) {
 	/* Su telefono: titolo, poi il telefono, poi i passi. */
@@ -506,7 +506,7 @@ Text Domain: mytime
 	font-size: clamp(3rem, 7vw, 5.5rem);
 	font-weight: 800;
 	line-height: 1;
-	color: var(--wp--preset--color--accent-1); /* rosa su bianco 3,5:1: va bene perché è testo molto grande */
+	color: var(--wp--preset--color--accent-1); /* hot pink su nero 5:1 */
 }
 
 /* 5. "MY TIME" gigante nel footer (decorativo, nascosto ai lettori di schermo). */
@@ -537,7 +537,7 @@ Text Domain: mytime
 		display: flex;
 		gap: 0.5rem;
 		padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
-		background: color-mix(in srgb, var(--wp--preset--color--contrast) 94%, transparent);
+		background: color-mix(in srgb, var(--wp--preset--color--base) 94%, transparent);
 	}
 	.mt-barra-azioni .wp-element-button {
 		flex: 1;
@@ -545,12 +545,17 @@ Text Domain: mytime
 		text-decoration: none;
 	}
 	.mt-barra-azioni .wp-element-button + .wp-element-button {
-		background: var(--wp--preset--color--base);
-		color: var(--wp--preset--color--contrast);
+		background: var(--wp--preset--color--contrast);
+		color: var(--wp--preset--color--base);
 	}
 	body {
 		padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); /* la barra non copre il fondo della pagina */
 	}
+}
+
+/* Righe alternate delle tabelle: il core usa un grigio chiaro fisso, che sul nero renderebbe illeggibile il testo bianco. */
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+	background-color: var(--wp--preset--color--accent-2);
 }
 
 /* 7. Tabelle degli orari: la riga sotto il mouse si colora. */

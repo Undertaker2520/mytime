@@ -10,12 +10,12 @@
 			"custom": false,
 			"customGradient": false,
 			"palette": [
-				{ "slug": "base", "name": "Bianco", "color": "#FFFFFF" },
-				{ "slug": "contrast", "name": "Nero", "color": "#1A1A1A" },
+				{ "slug": "base", "name": "Nero", "color": "#1A1A1A" },
+				{ "slug": "contrast", "name": "Bianco", "color": "#FFFFFF" },
 				{ "slug": "accent-1", "name": "Hot pink", "color": "#FF2D95" },
-				{ "slug": "accent-2", "name": "Grigio chiaro", "color": "#F4F4F4" },
-				{ "slug": "accent-3", "name": "Rosa scuro", "color": "#B8005F" },
-				{ "slug": "accent-4", "name": "Grigio", "color": "#5C5C5C" },
+				{ "slug": "accent-2", "name": "Grigio scuro", "color": "#2B2B2B" },
+				{ "slug": "accent-3", "name": "Rosa chiaro", "color": "#FF8AC2" },
+				{ "slug": "accent-4", "name": "Grigio", "color": "#B0B0B0" },
 				{ "slug": "accent-6", "name": "Linea sottile", "color": "color-mix(in srgb, currentColor 20%, transparent)" }
 			]
 		},
@@ -57,7 +57,7 @@
 				"border": { "radius": "999px" },
 				"color": {
 					"background": "var:preset|color|accent-1",
-					"text": "var:preset|color|contrast"
+					"text": "var:preset|color|base"
 				},
 				"spacing": {
 					"padding": { "top": "0.875rem", "bottom": "0.875rem", "left": "1.75rem", "right": "1.75rem" }
