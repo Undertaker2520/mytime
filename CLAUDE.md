@@ -38,7 +38,7 @@ Nicholas lavora a tempo pieno e sta preparando due esami universitari (gennaio�
 ## Design
 
 - **Logo**: cerchio **nero** con il monogramma "MT" stilizzato in **rosa/magenta e bianco**, scritta "MY TIME" sotto. File: `assets/logo.png` (versione ricevuta su WhatsApp, a bassa risoluzione: usarla come segnaposto e chiedere l'originale o un SVG). Esiste anche una versione precedente con il monogramma viola (foto profilo Facebook): non usarla.
-- **Palette** dal logo e dai volantini dell'associazione: nero/grafite, **magenta del logo come colore principale**, bianco, un rosa chiaro per gli sfondi tenui. I volantini usano anche accenti vivaci (azzurro, viola, verde, giallo) per distinguere i corsi: si possono usare con moderazione, per esempio come colore di ciascuna scheda corso. Verificare i contrasti WCAG AA (il magenta su bianco va controllato per i testi piccoli).
+- **Palette** (decisione di Nicholas, 2026-11-21): base **nero e bianco** con accenti **hot pink** `#FF2D95` per dare risalto; grigio chiaro `#F4F4F4` per gli sfondi tenui, rosa scuro `#B8005F` per i piccoli testi rosa. Niente altri colori (i colori dei corsi dei volantini non si usano più). L'hot pink su bianco arriva a 3,5:1: va bene come sfondo con testo nero (5:1), per testi grandi e per la grafica, mai per testo normale. Verificare sempre i contrasti WCAG AA.
 - Tono **allegro ed energico ma ordinato**, come i volantini: "Movimento · Energia · Divertimento". È un'associazione per persone di tutte le età, non una palestra aggressiva.
 - Mobile-first: la maggior parte delle visite arriverà da telefono, spesso da Instagram.
 - Pulsanti grandi per chiamare e scrivere su WhatsApp.

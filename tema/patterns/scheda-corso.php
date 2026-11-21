@@ -3,11 +3,11 @@
  * Title: Scheda corso
  * Slug: mytime/scheda-corso
  * Categories: mytime
- * Description: Un corso: nome, descrizione, a chi è rivolto, dove e quando, istruttore. Il colore del bordo si cambia dal pannello Stili.
+ * Description: Un corso: nome, descrizione, a chi è rivolto, dove e quando, istruttore.
  */
 ?>
-<!-- wp:group {"className":"mt-scheda-corso","borderColor":"corso-azzurro","style":{"border":{"width":"3px","radius":"16px"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group mt-scheda-corso has-border-color has-corso-azzurro-border-color" style="border-width:3px;border-radius:16px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+<!-- wp:group {"className":"mt-scheda-corso","borderColor":"contrast","style":{"border":{"width":"3px","radius":"16px"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group mt-scheda-corso has-border-color has-contrast-border-color" style="border-width:3px;border-radius:16px;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
 	<!-- wp:heading -->
 	<h2 class="wp-block-heading">Nome del corso</h2>
 	<!-- /wp:heading -->

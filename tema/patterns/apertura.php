@@ -8,8 +8,8 @@
 ?>
 <!-- wp:cover {"dimRatio":70,"overlayColor":"contrast","isUserOverlayColor":true,"minHeight":70,"minHeightUnit":"vh","align":"full","className":"mt-apertura","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-cover alignfull mt-apertura" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);min-height:70vh"><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-70 has-background-dim"></span><div class="wp-block-cover__inner-container">
-	<!-- wp:paragraph {"className":"mt-motto","textColor":"accent-3","fontSize":"small","style":{"typography":{"fontWeight":"700"}}} -->
-	<p class="mt-motto has-accent-3-color has-text-color has-small-font-size" style="font-weight:700">Movimento · Energia · Divertimento</p>
+	<!-- wp:paragraph {"className":"mt-motto","textColor":"contrast","fontSize":"small","style":{"typography":{"fontWeight":"700"}}} -->
+	<p class="mt-motto has-contrast-color has-text-color has-small-font-size" style="font-weight:700">Movimento · Energia · Divertimento</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:heading {"level":1,"fontSize":"xx-large"} -->

@@ -12,15 +12,11 @@
 			"palette": [
 				{ "slug": "base", "name": "Bianco", "color": "#FFFFFF" },
 				{ "slug": "contrast", "name": "Nero", "color": "#1A1A1A" },
-				{ "slug": "accent-1", "name": "Magenta", "color": "#E2007A" },
-				{ "slug": "accent-2", "name": "Rosa chiaro", "color": "#FDEEF5" },
-				{ "slug": "accent-3", "name": "Magenta scuro", "color": "#B8005F" },
+				{ "slug": "accent-1", "name": "Hot pink", "color": "#FF2D95" },
+				{ "slug": "accent-2", "name": "Grigio chiaro", "color": "#F4F4F4" },
+				{ "slug": "accent-3", "name": "Rosa scuro", "color": "#B8005F" },
 				{ "slug": "accent-4", "name": "Grigio", "color": "#5C5C5C" },
-				{ "slug": "accent-6", "name": "Linea sottile", "color": "color-mix(in srgb, currentColor 20%, transparent)" },
-				{ "slug": "corso-azzurro", "name": "Corso azzurro", "color": "#0091C8" },
-				{ "slug": "corso-viola", "name": "Corso viola", "color": "#7B3FA0" },
-				{ "slug": "corso-verde", "name": "Corso verde", "color": "#2E9E4F" },
-				{ "slug": "corso-giallo", "name": "Corso giallo", "color": "#F5C400" }
+				{ "slug": "accent-6", "name": "Linea sottile", "color": "color-mix(in srgb, currentColor 20%, transparent)" }
 			]
 		},
 		"typography": {
@@ -52,16 +48,16 @@
 				}
 			},
 			"link": {
-				"color": { "text": "var:preset|color|accent-3" },
+				"color": { "text": "var:preset|color|contrast" },
 				":hover": {
-					"color": { "text": "var:preset|color|accent-1" }
+					"color": { "text": "var:preset|color|accent-3" }
 				}
 			},
 			"button": {
 				"border": { "radius": "999px" },
 				"color": {
 					"background": "var:preset|color|accent-1",
-					"text": "var:preset|color|base"
+					"text": "var:preset|color|contrast"
 				},
 				"spacing": {
 					"padding": { "top": "0.875rem", "bottom": "0.875rem", "left": "1.75rem", "right": "1.75rem" }
@@ -69,7 +65,7 @@
 				"typography": { "fontWeight": "700" },
 				":hover": {
 					"color": {
-						"background": "var:preset|color|accent-3",
+						"background": "var:preset|color|contrast",
 						"text": "var:preset|color|base"
 					}
 				},

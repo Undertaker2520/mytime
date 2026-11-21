@@ -12,6 +12,14 @@ Text Domain: mytime
 
 /* Colori, font e dimensioni stanno in theme.json: qui si usano solo le sue variabili --wp--preset--*. */
 
+/* Palette nero e bianco con accenti hot pink. L'hot pink su bianco arriva a 3,5:1: per il testo normale
+   si usa solo come sfondo (con testo nero, 5:1) o come decorazione, mai come colore del testo. */
+:where(.wp-block-post-content, .wp-block-template-part) a:where(:not(.wp-element-button)) {
+	text-decoration-color: var(--wp--preset--color--accent-1);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.2em;
+}
+
 /* Contenitore unico di 1200 px (theme.json). I testi lunghi restano al massimo 70 caratteri per riga,
    allineati al bordo sinistro del contenitore invece che centrati. */
 .wp-block-post-content > :is(p, ul, ol) {
@@ -54,6 +62,7 @@ Text Domain: mytime
 	}
 	.mt-scheda-corso:hover {
 		translate: 0 -6px;
+		border-color: var(--wp--preset--color--accent-1) !important;
 		box-shadow: 0 18px 32px -18px color-mix(in srgb, var(--wp--preset--color--contrast) 45%, transparent);
 	}
 	.mt-scheda-corso .wp-block-image {
@@ -171,10 +180,10 @@ Text Domain: mytime
 	margin-right: auto !important;
 	padding: 0.25em 0.9em;
 	border-radius: 999px;
-	background: var(--wp--preset--color--base);
+	background: var(--wp--preset--color--accent-1);
 }
 
-/* Titoli di sezione: tratto magenta "a pennello" sotto, decorativo. Il SVG fa solo da maschera, il colore viene da theme.json. */
+/* Titoli di sezione: tratto hot pink "a pennello" sotto, decorativo. Il SVG fa solo da maschera, il colore viene da theme.json. */
 .wp-block-post-content > h2.wp-block-heading::after,
 .wp-block-post-content > .wp-block-columns > .wp-block-column > h2.wp-block-heading::after,
 .mt-iscriversi > h2.wp-block-heading::after {
@@ -206,11 +215,11 @@ Text Domain: mytime
 	z-index: 2; /* sopra la velatura (z-index 1 nel core) */
 	pointer-events: none;
 	background:
-		radial-gradient(circle at 76% 4%, var(--wp--preset--color--corso-giallo) 0 12px, transparent 13px),
-		radial-gradient(circle at 94% 9%, transparent 0 9px, var(--wp--preset--color--corso-azzurro) 10px 14px, transparent 15px),
+		radial-gradient(circle at 76% 4%, var(--wp--preset--color--accent-1) 0 12px, transparent 13px),
+		radial-gradient(circle at 94% 9%, transparent 0 9px, var(--wp--preset--color--base) 10px 14px, transparent 15px),
 		radial-gradient(circle at 96% 62%, var(--wp--preset--color--accent-1) 0 16px, transparent 17px),
-		radial-gradient(circle at 4% 93%, transparent 0 10px, var(--wp--preset--color--corso-verde) 11px 15px, transparent 16px),
-		radial-gradient(circle at 62% 96%, var(--wp--preset--color--corso-viola) 0 8px, transparent 9px);
+		radial-gradient(circle at 4% 93%, transparent 0 10px, var(--wp--preset--color--accent-1) 11px 15px, transparent 16px),
+		radial-gradient(circle at 62% 96%, var(--wp--preset--color--base) 0 8px, transparent 9px);
 	animation: mt-battuta 0.6s ease-in-out 4;
 }
 /* Due note musicali, in controtempo rispetto ai cerchi (finiscono entro 2,7 s). */
@@ -389,7 +398,7 @@ Text Domain: mytime
 	align-self: flex-start;
 	border-bottom-left-radius: 4px;
 	background: var(--wp--preset--color--accent-1);
-	color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
 }
 @media (max-width: 781px) {
 	/* Su telefono: titolo, poi il telefono, poi i passi. */
@@ -467,7 +476,7 @@ Text Domain: mytime
 	color: var(--wp--preset--color--accent-1);
 }
 
-/* 2. Fascia magenta con i nomi dei corsi, leggermente inclinata. */
+/* 2. Fascia hot pink con i nomi dei corsi, leggermente inclinata. */
 .mt-fascia {
 	overflow: clip;
 	padding-block: 1rem;
@@ -497,7 +506,7 @@ Text Domain: mytime
 	font-size: clamp(3rem, 7vw, 5.5rem);
 	font-weight: 800;
 	line-height: 1;
-	color: var(--wp--preset--color--accent-3);
+	color: var(--wp--preset--color--accent-1); /* rosa su bianco 3,5:1: va bene perché è testo molto grande */
 }
 
 /* 5. "MY TIME" gigante nel footer (decorativo, nascosto ai lettori di schermo). */
@@ -551,19 +560,19 @@ Text Domain: mytime
 	}
 	.wp-block-table tbody tr:hover,
 	.wp-block-table.is-style-stripes tbody tr:hover {
-		background-color: var(--wp--preset--color--accent-2);
+		background-color: color-mix(in srgb, var(--wp--preset--color--accent-1) 14%, var(--wp--preset--color--base));
 	}
 }
 
 /* Animazioni a scorrimento (1, 2, 3, 4, 5): ferme su Firefox e con "riduci movimento". */
 @keyframes mt-accendi {
 	from {
-		color: color-mix(in srgb, var(--wp--preset--color--contrast) 22%, var(--wp--preset--color--base));
+		color: color-mix(in srgb, var(--wp--preset--color--contrast) 52%, var(--wp--preset--color--base)) /* grigio di partenza a 3,2:1: leggibile anche prima di accendersi */;
 	}
 }
 @keyframes mt-accendi-parola {
 	from {
-		color: color-mix(in srgb, var(--wp--preset--color--contrast) 22%, var(--wp--preset--color--base));
+		color: color-mix(in srgb, var(--wp--preset--color--contrast) 52%, var(--wp--preset--color--base)) /* grigio di partenza a 3,2:1: leggibile anche prima di accendersi */;
 	}
 }
 @keyframes mt-scorri {
@@ -596,7 +605,7 @@ Text Domain: mytime
 }
 @supports (animation-timeline: view()) {
 	@media (prefers-reduced-motion: no-preference) {
-		/* La frase passa dal grigio al nero, poi la parola in grassetto diventa magenta per ultima. */
+		/* La frase passa dal grigio al nero, poi la parola in grassetto diventa hot pink per ultima. */
 		.mt-manifesto {
 			view-timeline: --mt-motto block;
 			animation: mt-accendi linear both;

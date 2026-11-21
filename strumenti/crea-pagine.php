@@ -70,8 +70,8 @@ function mt_faq( $domanda, $risposta ) {
 // Scheda corso dal pattern: ancora (#zumba), colore, foto in cima e testi.
 function mt_corso( $nome, $ancora, $colore, $foto, $descrizione, $dove ) {
 	$c = mt_pattern( 'scheda-corso' );
-	$c = str_replace( '{"className":"mt-scheda-corso","borderColor":"corso-azzurro"', '{"anchor":"' . $ancora . '","className":"mt-scheda-corso","borderColor":"' . $colore . '"', $c );
-	$c = preg_replace( '#<div class="wp-block-group mt-scheda-corso has-border-color has-corso-azzurro-border-color"([^>]*)>#', '<div id="' . $ancora . '" class="wp-block-group mt-scheda-corso has-border-color has-' . $colore . "-border-color\"$1>\n" . mt_img( mt_foto( $foto ) ), $c, 1 );
+	$c = str_replace( '{"className":"mt-scheda-corso","borderColor":"contrast"', '{"anchor":"' . $ancora . '","className":"mt-scheda-corso","borderColor":"' . $colore . '"', $c );
+	$c = preg_replace( '#<div class="wp-block-group mt-scheda-corso has-border-color has-contrast-border-color"([^>]*)>#', '<div id="' . $ancora . '" class="wp-block-group mt-scheda-corso has-border-color has-' . $colore . "-border-color\"$1>\n" . mt_img( mt_foto( $foto ) ), $c, 1 );
 	return str_replace(
 		array( 'Nome del corso', '[DA COMPLETARE: descrizione del corso in 2–3 righe]', '[DA COMPLETARE: sede, giorni e orari, per esempio Camigliano · martedì 18:30, venerdì 18:30]' ),
 		array( $nome, $descrizione, $dove ),
@@ -102,14 +102,14 @@ function mt_proposta( $titolo, $testo ) {
 
 // Dati: gli stessi pubblicati sul sito. Gli orari sono anche nelle tabelle delle sedi.
 $corsi = array(
-	array( 'Zumba', 'zumba', 'corso-azzurro', 'zumba', 'Allenamento a ritmo di musica latina e internazionale: passi semplici, tanta energia e il piacere di ballare in gruppo.', 'Camigliano · martedì 18:30, venerdì 18:30<br>Lunata · martedì 20:00, giovedì 20:00', 'Camigliano · Lunata' ),
-	array( 'Pilates', 'pilates', 'corso-viola', 'pilates', 'Esercizi a corpo libero lenti e controllati per rinforzare addome e schiena, migliorare la postura e la flessibilità.', 'Camigliano · martedì 19:15 e 20:00, giovedì 19:15 e 20:00', 'Camigliano' ),
-	array( 'Aerofantasy', 'aerofantasy', 'corso-verde', 'aerofantasy', 'Coreografie aerobiche a tempo di musica, per allenare il cuore e la coordinazione divertendosi.', 'Camigliano · mercoledì 19:30, venerdì 19:15', 'Camigliano' ),
-	array( 'Allenamento funzionale', 'allenamento-funzionale', 'corso-giallo', 'funzionale', 'Esercizi che riprendono i movimenti di tutti i giorni per migliorare forza, equilibrio e resistenza, ognuno al proprio ritmo.', 'Camigliano · lunedì 19:30, mercoledì 20:15', 'Camigliano' ),
-	array( 'GAG', 'gag', 'corso-azzurro', 'gag', 'Lezione dedicata a gambe, addominali e glutei: esercizi mirati per tonificare la parte bassa del corpo.', 'Lunata · giovedì 19:00', 'Lunata' ),
-	array( 'Step GAG', 'step-gag', 'corso-viola', 'step', 'Gambe, addominali e glutei con lo step, la pedana su cui si sale e si scende a ritmo di musica.', 'Lunata · martedì 19:00', 'Lunata' ),
-	array( 'HIIT GAG', 'hiit-gag', 'corso-verde', 'hiit', 'Gambe, addominali e glutei in versione HIIT: brevi intervalli di esercizio intenso alternati a pause di recupero.', 'Lunata · lunedì 21:00', 'Lunata' ),
-	array( 'Tonificazione', 'tonificazione', 'corso-giallo', 'tonificazione', 'Esercizi per rinforzare e modellare tutti i gruppi muscolari, per sentirsi più forti e in forma.', 'Lunata · giovedì 20:45', 'Lunata' ),
+	array( 'Zumba', 'zumba', 'contrast', 'zumba', 'Allenamento a ritmo di musica latina e internazionale: passi semplici, tanta energia e il piacere di ballare in gruppo.', 'Camigliano · martedì 18:30, venerdì 18:30<br>Lunata · martedì 20:00, giovedì 20:00', 'Camigliano · Lunata' ),
+	array( 'Pilates', 'pilates', 'contrast', 'pilates', 'Esercizi a corpo libero lenti e controllati per rinforzare addome e schiena, migliorare la postura e la flessibilità.', 'Camigliano · martedì 19:15 e 20:00, giovedì 19:15 e 20:00', 'Camigliano' ),
+	array( 'Aerofantasy', 'aerofantasy', 'contrast', 'aerofantasy', 'Coreografie aerobiche a tempo di musica, per allenare il cuore e la coordinazione divertendosi.', 'Camigliano · mercoledì 19:30, venerdì 19:15', 'Camigliano' ),
+	array( 'Allenamento funzionale', 'allenamento-funzionale', 'contrast', 'funzionale', 'Esercizi che riprendono i movimenti di tutti i giorni per migliorare forza, equilibrio e resistenza, ognuno al proprio ritmo.', 'Camigliano · lunedì 19:30, mercoledì 20:15', 'Camigliano' ),
+	array( 'GAG', 'gag', 'contrast', 'gag', 'Lezione dedicata a gambe, addominali e glutei: esercizi mirati per tonificare la parte bassa del corpo.', 'Lunata · giovedì 19:00', 'Lunata' ),
+	array( 'Step GAG', 'step-gag', 'contrast', 'step', 'Gambe, addominali e glutei con lo step, la pedana su cui si sale e si scende a ritmo di musica.', 'Lunata · martedì 19:00', 'Lunata' ),
+	array( 'HIIT GAG', 'hiit-gag', 'contrast', 'hiit', 'Gambe, addominali e glutei in versione HIIT: brevi intervalli di esercizio intenso alternati a pause di recupero.', 'Lunata · lunedì 21:00', 'Lunata' ),
+	array( 'Tonificazione', 'tonificazione', 'contrast', 'tonificazione', 'Esercizi per rinforzare e modellare tutti i gruppi muscolari, per sentirsi più forti e in forma.', 'Lunata · giovedì 20:45', 'Lunata' ),
 );
 $camigliano = array(
 	array( 'lunedì', '19:30', 'Allenamento funzionale' ), array( 'martedì', '18:30', 'Zumba' ), array( 'martedì', '19:15 e 20:00', 'Pilates' ),

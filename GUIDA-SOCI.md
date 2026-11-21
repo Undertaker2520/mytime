@@ -82,7 +82,7 @@ Tieni le righe in ordine di giorno e di ora: lunedì in alto, venerdì in fondo.
    - **Per chi**, **Dove e quando**, **Istruttore**
 
    Cancella ogni testo tra parentesi quadre `[DA COMPLETARE…]` e scrivi l'informazione vera.
-5. Il colore del bordo, se vuoi cambiarlo: clicca sul bordo della scheda, apri **Impostazioni** → scheda **Stili** → **Bordi e ombre** → **Bordo**, clicca sul pallino colorato e scegli uno dei colori **Corso** (azzurro, viola, verde, giallo).
+5. Il bordo della scheda è nero (diventa rosa quando ci passi sopra con il mouse): lascialo così.
 6. Dai alla scheda un nome per i link: con la scheda selezionata, **Impostazioni** → scheda **Blocco** → **Avanzate** → **Ancora HTML**, scrivi il nome del corso in minuscolo con i trattini al posto degli spazi (per esempio `step-gag`).
 7. Premi **Salva**.
 
@@ -137,7 +137,7 @@ Per mettere la foto in una scheda nuova: clicca sul titolo della scheda, premi *
 Nella Home e in **Iscrizioni e costi** c'è un telefono con una conversazione su WhatsApp. I messaggi sono testo normale: clicca su un messaggio e riscrivilo, come qualsiasi paragrafo. Premi **Salva**.
 
 - Per aggiungere un messaggio: clicca su un messaggio, poi **Opzioni** (i tre puntini) → **Duplica**, e cambia il testo della copia. Sulla pagina i messaggi arrivano uno alla volta fino al sesto; dal settimo in poi compaiono insieme, quindi meglio non superare i sei.
-- Per far "parlare" l'altra persona: seleziona il messaggio, apri **Impostazioni** → scheda **Blocco** → **Avanzate** e nel campo **Classe/i CSS aggiuntiva/e** scrivi `mt-bolla mt-bolla-noi` (messaggio dell'associazione, a sinistra, magenta) oppure `mt-bolla mt-bolla-persona` (messaggio di chi scrive, a destra, rosa).
+- Per far "parlare" l'altra persona: seleziona il messaggio, apri **Impostazioni** → scheda **Blocco** → **Avanzate** e nel campo **Classe/i CSS aggiuntiva/e** scrivi `mt-bolla mt-bolla-noi` (messaggio dell'associazione, a sinistra, rosa acceso) oppure `mt-bolla mt-bolla-persona` (messaggio di chi scrive, a destra, grigio chiaro).
 - Se cambi gli orari di Zumba a Lunata, ricordati di correggere anche il messaggio del telefono.
 
 ---
