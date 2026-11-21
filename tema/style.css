@@ -556,6 +556,25 @@ Text Domain: mytime
 	}
 }
 
+/* Telefono: schede con meno margine interno (più spazio al testo e ai pulsanti) e anteprima dei corsi su due colonne. */
+@media (max-width: 600px) {
+	:is(.mt-scheda-corso, .mt-scheda-sede, .mt-scheda-contatti, .mt-proposta) {
+		padding: 1.25rem !important; /* il margine interno è scritto nel blocco: serve !important */
+	}
+	.is-layout-grid:has(> .mt-mini-corso) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem 1rem;
+	}
+	.mt-mini-corso h3 {
+		font-size: var(--wp--preset--font-size--medium);
+	}
+}
+
+/* Tabelle: il core permette di spezzare le parole a metà ("marte-dì") sulle colonne strette. */
+.wp-block-table :is(td, th) {
+	word-break: normal;
+}
+
 /* Righe alternate delle tabelle: il core usa un grigio chiaro fisso, che sul nero renderebbe illeggibile il testo bianco. */
 .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
 	background-color: var(--wp--preset--color--accent-2);
