@@ -443,6 +443,204 @@ Text Domain: mytime
 	}
 }
 
+/* ============================================================
+   Idee da uberdesigner.ai rifatte in CSS (niente JavaScript).
+   ============================================================ */
+
+/* Spazio prima delle nuove sezioni; la fascia corsi si appoggia all'Apertura. */
+.wp-block-post-content > :is(.mt-manifesto, .mt-numeri, .mt-fascia) {
+	margin-block-start: var(--wp--preset--spacing--70);
+}
+.wp-block-post-content > .mt-apertura + .mt-fascia {
+	margin-block-start: 0;
+}
+
+/* 1. Motto in grande che si accende mentre si scorre. */
+.wp-block-post-content > .mt-manifesto {
+	max-width: 18ch;
+	font-size: clamp(2.2rem, 6vw, 4.75rem);
+	font-weight: 700;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+}
+.mt-manifesto strong {
+	color: var(--wp--preset--color--accent-1);
+}
+
+/* 2. Fascia magenta con i nomi dei corsi, leggermente inclinata. */
+.mt-fascia {
+	overflow: clip;
+	padding-block: 1rem;
+	rotate: -2deg;
+	scale: 1.04 1;
+}
+.mt-fascia > p {
+	width: max-content;
+	margin: 0;
+	white-space: nowrap;
+	font-size: clamp(1.5rem, 4vw, 3rem);
+	font-weight: 800;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
+/* 3. Numeri grandi. */
+.mt-numero {
+	overflow: clip;
+	padding-top: 1rem;
+	border-top: 3px solid var(--wp--preset--color--accent-1);
+}
+.mt-numero > * {
+	margin-block: 0.25rem 0;
+}
+.mt-numero-cifra {
+	font-size: clamp(3rem, 7vw, 5.5rem);
+	font-weight: 800;
+	line-height: 1;
+	color: var(--wp--preset--color--accent-3);
+}
+
+/* 5. "MY TIME" gigante nel footer (decorativo, nascosto ai lettori di schermo). */
+.mt-wordmark {
+	margin-block: var(--wp--preset--spacing--50) 0 !important;
+	overflow: clip;
+	white-space: nowrap;
+	text-align: center;
+	font-size: clamp(3rem, 20.5vw, 21rem);
+	font-weight: 800;
+	line-height: 0.85;
+	letter-spacing: -0.04em;
+	color: var(--wp--preset--color--accent-1);
+}
+.mt-wordmark span {
+	display: inline-block;
+}
+
+/* 6. Barra fissa Chiama / WhatsApp, solo su telefono. */
+.mt-barra-azioni {
+	display: none;
+}
+@media (max-width: 781px) {
+	.mt-barra-azioni {
+		position: fixed;
+		inset: auto 0 0 0;
+		z-index: 100;
+		display: flex;
+		gap: 0.5rem;
+		padding: 0.6rem 1rem calc(0.6rem + env(safe-area-inset-bottom));
+		background: color-mix(in srgb, var(--wp--preset--color--contrast) 94%, transparent);
+	}
+	.mt-barra-azioni .wp-element-button {
+		flex: 1;
+		text-align: center;
+		text-decoration: none;
+	}
+	.mt-barra-azioni .wp-element-button + .wp-element-button {
+		background: var(--wp--preset--color--base);
+		color: var(--wp--preset--color--contrast);
+	}
+	body {
+		padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); /* la barra non copre il fondo della pagina */
+	}
+}
+
+/* 7. Tabelle degli orari: la riga sotto il mouse si colora. */
+@media (hover: hover) {
+	.wp-block-table tbody tr {
+		transition: background-color 0.15s ease-out;
+	}
+	.wp-block-table tbody tr:hover,
+	.wp-block-table.is-style-stripes tbody tr:hover {
+		background-color: var(--wp--preset--color--accent-2);
+	}
+}
+
+/* Animazioni a scorrimento (1, 2, 3, 4, 5): ferme su Firefox e con "riduci movimento". */
+@keyframes mt-accendi {
+	from {
+		color: color-mix(in srgb, var(--wp--preset--color--contrast) 22%, var(--wp--preset--color--base));
+	}
+}
+@keyframes mt-accendi-parola {
+	from {
+		color: color-mix(in srgb, var(--wp--preset--color--contrast) 22%, var(--wp--preset--color--base));
+	}
+}
+@keyframes mt-scorri {
+	from {
+		translate: 8% 0;
+	}
+	to {
+		translate: -35% 0;
+	}
+}
+@keyframes mt-sali {
+	from {
+		opacity: 0;
+		translate: 0 100%;
+	}
+}
+@keyframes mt-sali-cifra {
+	from {
+		opacity: 0;
+		translate: 0 0.35em; /* salita breve: non copre la riga sotto */
+	}
+}
+@keyframes mt-svela {
+	from {
+		clip-path: inset(0 0 100% 0);
+	}
+	to {
+		clip-path: inset(0);
+	}
+}
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		/* La frase passa dal grigio al nero, poi la parola in grassetto diventa magenta per ultima. */
+		.mt-manifesto {
+			view-timeline: --mt-motto block;
+			animation: mt-accendi linear both;
+			animation-timeline: --mt-motto;
+			animation-range: entry 50% cover 45%;
+		}
+		.mt-manifesto strong {
+			animation: mt-accendi-parola linear both;
+			animation-timeline: --mt-motto;
+			animation-range: cover 40% cover 55%;
+		}
+		.mt-fascia > p {
+			animation: mt-scorri linear both;
+			animation-timeline: view();
+			animation-range: cover 0% cover 100%;
+		}
+		.mt-numero-cifra {
+			animation: mt-sali-cifra linear both;
+			animation-timeline: view();
+			animation-range: entry 10% cover 35%;
+		}
+		.mt-numero:nth-child(2) .mt-numero-cifra { animation-range: entry 25% cover 40%; }
+		.mt-numero:nth-child(3) .mt-numero-cifra { animation-range: entry 40% cover 45%; }
+		.mt-numero:nth-child(4) .mt-numero-cifra { animation-range: entry 55% cover 50%; }
+		.mt-mini-corso img,
+		.mt-scheda-corso img,
+		.mt-scheda-sede img {
+			animation: mt-svela linear both;
+			animation-timeline: view();
+			animation-range: entry 10% cover 35%;
+		}
+		.mt-wordmark span {
+			animation: mt-sali linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 70%;
+		}
+		.mt-wordmark span:nth-child(2) { animation-range: entry 8% entry 76%; }
+		.mt-wordmark span:nth-child(3) { animation-range: entry 16% entry 82%; }
+		.mt-wordmark span:nth-child(4) { animation-range: entry 24% entry 88%; }
+		.mt-wordmark span:nth-child(5) { animation-range: entry 32% entry 94%; }
+		.mt-wordmark span:nth-child(6) { animation-range: entry 40% entry 100%; }
+	}
+}
+
 /* "Riduci movimento" attivo: niente animazioni né transizioni. */
 @media (prefers-reduced-motion: reduce) {
 	*,

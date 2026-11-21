@@ -166,8 +166,11 @@ $pagine = array(
 	'home'               => array(
 		'Home',
 		$apertura
+		. mt_pattern( 'fascia-corsi' )
 		. mt_h( 'I nostri corsi' ) . mt_griglia( $mini, 4, '14rem' ) . mt_bottone( 'Scopri i corsi', '/corsi/' )
+		. mt_pattern( 'numeri' )
 		. mt_pattern( 'come-iscriversi' )
+		. mt_pattern( 'manifesto' )
 		. mt_h( 'Dove ci trovi' ) . mt_griglia( $sede_c . $sede_l, 2, '20rem' ) . mt_bottone( 'Vedi tutti gli orari', '/sedi-e-orari/', true )
 		. mt_h( 'Altre proposte' ) . mt_griglia(
 			mt_proposta( 'Fit &amp; Walk', '[DA COMPLETARE: descrizione]' )
