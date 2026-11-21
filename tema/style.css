@@ -486,6 +486,7 @@ Text Domain: mytime
 .mt-fascia > p {
 	width: max-content;
 	margin: 0;
+	padding-inline-start: max(var(--wp--style--root--padding-left), (100vw - 1200px) / 2); /* "Zumba" parte allineato al contenuto, intero */
 	white-space: nowrap;
 	font-size: clamp(1.5rem, 4vw, 3rem);
 	font-weight: 800;
@@ -509,13 +510,13 @@ Text Domain: mytime
 	color: var(--wp--preset--color--accent-1); /* hot pink su nero 5:1 */
 }
 
-/* 5. "MY TIME" gigante nel footer (decorativo, nascosto ai lettori di schermo). */
+/* 5. "MY TIME" grande nel footer (decorativo, nascosto ai lettori di schermo). */
 .mt-wordmark {
 	margin-block: var(--wp--preset--spacing--50) 0 !important;
 	overflow: clip;
 	white-space: nowrap;
 	text-align: center;
-	font-size: clamp(3rem, 20.5vw, 21rem);
+	font-size: clamp(2.5rem, 8vw, 6.5rem);
 	font-weight: 800;
 	line-height: 0.85;
 	letter-spacing: -0.04em;
@@ -581,9 +582,6 @@ Text Domain: mytime
 	}
 }
 @keyframes mt-scorri {
-	from {
-		translate: 8% 0;
-	}
 	to {
 		translate: -35% 0;
 	}
@@ -625,7 +623,7 @@ Text Domain: mytime
 		.mt-fascia > p {
 			animation: mt-scorri linear both;
 			animation-timeline: view();
-			animation-range: cover 0% cover 100%;
+			animation-range: cover 50% cover 100%; /* ferma finché non arriva a metà schermo: all'apertura si legge tutta */
 		}
 		.mt-numero-cifra {
 			animation: mt-sali-cifra linear both;

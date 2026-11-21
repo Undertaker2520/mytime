@@ -13,7 +13,7 @@
 				{ "slug": "base", "name": "Nero", "color": "#1A1A1A" },
 				{ "slug": "contrast", "name": "Bianco", "color": "#FFFFFF" },
 				{ "slug": "accent-1", "name": "Hot pink", "color": "#FF2D95" },
-				{ "slug": "accent-2", "name": "Grigio scuro", "color": "#2B2B2B" },
+				{ "slug": "accent-2", "name": "Grigio scuro", "color": "#363636" },
 				{ "slug": "accent-3", "name": "Rosa chiaro", "color": "#FF8AC2" },
 				{ "slug": "accent-4", "name": "Grigio", "color": "#B0B0B0" },
 				{ "slug": "accent-6", "name": "Linea sottile", "color": "color-mix(in srgb, currentColor 20%, transparent)" }
@@ -31,6 +31,12 @@
 		}
 	},
 	"styles": {
+		"color": {
+			"gradient": "linear-gradient(180deg, #2C2C2C 0%, var(--wp--preset--color--base) 100%)"
+		},
+		"background": {
+			"backgroundAttachment": "fixed"
+		},
 		"spacing": {
 			"blockGap": "1.5rem"
 		},
